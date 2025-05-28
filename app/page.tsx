@@ -20,18 +20,149 @@ const imageStyle2 = {
 }
 const features = [
     {
-        title: 'Надежность',
+        title: 'Надежность и безопасность',
         description:
-            'Librix на 100% защищен от SQL-инъекций — уязвимости, которая затрагивает большинство CMS.',
+            'Все проекты проходят тщательное тестирование и защищены от основных уязвимостей, включая SQL-инъекции, XSS и другие распространённые угрозы.',
+    },
+    {
+        title: 'Адаптивный дизайн',
+        description:
+            'Мы создаём сайты и приложения, которые отлично работают на любых устройствах — от мобильных телефонов до больших экранов.',
+    },
+    {
+        title: 'Современные технологии',
+        description:
+            'Используем актуальные стеки и фреймворки, такие как React, Node.js, TypeScript и Kubernetes для масштабируемых и производительных решений.',
+    },
+    {
+        title: 'Индивидуальный подход',
+        description:
+            'Проектируем интерфейсы и функционал под уникальные потребности каждого клиента, создавая удобные и эффективные решения.',
+    },
+    {
+        title: 'Поддержка и сопровождение',
+        description:
+            'Оказываем техническую поддержку и регулярное обновление проектов, чтобы ваши интернет-сервисы всегда оставались современными и работали без сбоев.',
     },
 ];
 
-const portfolioItems = Array(5).fill({
-    title: 'Сайт PHP',
-    description: 'Интеграция с CRM Bitrix',
-    updated: '5 мин',
-    image: '/sitew_og.png',
-});
+
+
+const portfolioItems = [
+    {
+        title: "Telegram Bot / АС для автоматического ведения канала",
+        description:
+            "Автоматизация управления телеграм-каналом с использованием Node.js, TypeScript, React и Telegram API. Запуск в Kubernetes.",
+        techStack: ["Node.js", "TypeScript", "React", "Telegram API", "Kubernetes"],
+        image: '/image-5_orig.webp',
+        updated: "2024-04-10",
+    },
+    {
+        title: "Bybit Trading Bot",
+        description:
+            "Торговый бот для криптобиржи Bybit с продвинутыми стратегиями и мониторингом в реальном времени.",
+        techStack: ["Python", "Asyncio", "REST API", "Docker"],
+        image: '/RU_2405-T26987_PM_CopyPro_1600x900.png',
+        updated: "2024-03-05",
+    },
+    {
+        title: "Сайт мебель на заказ для Ленинградской области",
+        description:
+            "Сайт-витрина с заказом мебели на заказ, адаптивный дизайн и удобный UX/UI.",
+        techStack: ["React", "Next.js", "CSS Modules", "Node.js"],
+        image: '/ytf1cpnvpe8vkn6sm7cl0y3x6haxctnh.jpg',
+        updated: "2023-12-20",
+    },
+    {
+        title: "Bitrix Migrator",
+        description:
+            "Система миграций для проектов на Bitrix, автоматизация переноса данных и структуры.",
+        techStack: ["PHP", "Bitrix Framework", "MySQL", "Composer"],
+        image: '/8ec9bcc4-27d9-4031-a680-69f2b20f38ad.webp',
+        updated: "2024-01-15",
+    },
+    {
+        title: "Vega Content System",
+        description:
+            "CMS для управления контентом с расширяемой архитектурой, поддержкой мультиязычности и кастомных модулей.",
+        techStack: ["Laravel", "Vue.js", "MySQL", "Redis"],
+        image: '/nature-pixel-art-ai-generated-3840-x-2160-v0-hdoiobp7mzfc1.webp',
+        updated: "2024-02-28",
+    },
+];
+
+
+const teamMembers = [
+    {
+        name: "Артём",
+        role: "JavaScript программист",
+        image: "/telegram-cloud-photo-size-2-3978908276710549647-c.jpg"
+    },
+    {
+        name: "Алексей",
+        role: "PHP программист",
+        image: "/5da1ff409f459e8654c8eb93d5ea0b04.jpg"
+    },
+    {
+        name: "Сергей",
+        role: "Менеджер",
+        image: "/telegram-peer-photo-size-2-4394551365959002028-1-0-0.jpg"
+    },
+    {
+        name: "Егор",
+        role: "Тестировщик ПО",
+        image: "/telegram-peer-photo-size-2-5433942415187767234-1-0-0.jpg"
+    },
+    {
+        name: "Валентин",
+        role: "Bitrix программист",
+        image: "/Anonymous_emblem.svg.png"
+    }
+];
+
+const showcases = [
+    {
+        title: "Полностью адаптивный дизайн",
+        text: `Мы создаём интернет-проекты, которые идеально отображаются и работают на любых устройствах — от мобильных телефонов до десктопов. Адаптивность — ключ к комфортному пользовательскому опыту и высокой конверсии.`,
+        image: "/bg-showcase-1.jpg",
+        orderImageFirst: false,
+    },
+    {
+        title: "Современные технологии и инструменты",
+        text: `Используем передовые технологии, включая Bootstrap 5, React, Node.js и Kubernetes, чтобы создавать масштабируемые, производительные и легко поддерживаемые веб-решения.`,
+        image: "/bg-showcase-1.jpg",
+        orderImageFirst: true,
+    },
+    {
+        title: "Индивидуальный подход и гибкость",
+        text: `Наши проекты легко адаптируются под ваши бизнес-задачи: от простого сайта-визитки до сложных интернет-магазинов и сервисов недвижимости. Мы создаём удобные и масштабируемые решения с возможностью дальнейшего развития.`,
+        image: "/bg-showcase-1.jpg",
+        orderImageFirst: false,
+    },
+    {
+        title: "Интеграция с внешними сервисами",
+        text: `Интегрируем сайты с Telegram, CRM, платёжными системами, картами и другими API. Автоматизируем процессы и упрощаем управление бизнесом.`,
+        image: "/bg-showcase-1.jpg",
+        orderImageFirst: true,
+    },
+    {
+        title: "Поддержка и развитие проектов",
+        text: `Мы не просто сдаём сайт — мы сопровождаем его, развиваем, добавляем новые функции и следим за стабильной работой. Долгосрочное сотрудничество — наша цель.`,
+        image: "/bg-showcase-1.jpg",
+        orderImageFirst: false,
+    },
+    {
+        title: "SEO и производительность",
+        text: `Уделяем внимание быстрой загрузке, чистому коду и оптимизации под поисковые системы, чтобы ваши клиенты быстрее находили вас в интернете.`,
+        image: "/bg-showcase-1.jpg",
+        orderImageFirst: true,
+    },
+];
+
+
+
+
+
 
 
 function Home({}: HomeProps) {
@@ -77,21 +208,31 @@ function Home({}: HomeProps) {
                         </Row>
                         <div className="d-flex gap-4 flex-wrap justify-content-center">
                             {portfolioItems.map((item, idx) => (
-                                <div key={idx} className="card" style={{ width: '18rem' }}>
+                                <div key={idx} className="card" style={{width: '18rem'}}>
                                     <Image
                                         className="card-img-top"
                                         src={item.image}
                                         alt="..."
                                         width={500}
                                         height={500}
-                                        style={{ objectFit: 'cover' }}
+                                        style={{objectFit: 'cover'}}
                                     />
-                                    <div className="card-body">
+
+                                    <div className="card-body d-flex flex-column">
                                         <h5 className="card-title">{item.title}</h5>
-                                        <p className="card-text">{item.description}</p>
+                                        <p className="card-text flex-grow-1">{item.description}</p>
                                         <p className="card-text">
-                                            <small className="text-muted">Время последнего обновления {item.updated}</small>
+                                            <small className="text-muted">
+                                                Технологии: {item.techStack.join(', ')}
+                                            </small>
                                         </p>
+                                        {item.updated && (
+                                            <p className="card-text">
+                                                <small className="text-muted">Последнее
+                                                    обновление: {item.updated}</small>
+                                            </p>
+                                        )}
+
                                     </div>
                                 </div>
                             ))}
@@ -99,7 +240,7 @@ function Home({}: HomeProps) {
                     </Container>
                 </Col>
             </Row>
-   {/*         <Row xl={2} className="justify-content-center m-5">
+            {/*         <Row xl={2} className="justify-content-center m-5">
                 <Col lg={12}>
                     <section>
                         <Container>
@@ -181,229 +322,129 @@ function Home({}: HomeProps) {
                 <Col lg={12}>
                     <section className="showcase">
                         <div className="container-fluid p-0">
-
-
-                            <div className="row g-0">
-                                <div className="col-lg-6 order-lg-2 text-white showcase-img">
-                                    <Image
-                                        src="/bg-showcase-1.jpg"
-                                        alt="..."
-                                        width={300}
-                                        height={400}
-                                        layout="responsive"
-                                        objectFit="cover"
-                                    />
+                            {showcases.map(({ title, text, image, orderImageFirst }, idx) => (
+                                <div key={idx} className="row g-0">
+                                    {orderImageFirst ? (
+                                        <>
+                                            <div className="col-lg-6 text-white showcase-img">
+                                                <Image
+                                                    src={image}
+                                                    alt={title}
+                                                    width={300}
+                                                    height={400}
+                                                    layout="responsive"
+                                                    objectFit="cover"
+                                                />
+                                            </div>
+                                            <div className="col-lg-6 my-auto showcase-text">
+                                                <h2>{title}</h2>
+                                                <p className="lead mb-0">{text}</p>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="col-lg-6 order-lg-2 text-white showcase-img">
+                                                <Image
+                                                    src={image}
+                                                    alt={title}
+                                                    width={300}
+                                                    height={400}
+                                                    layout="responsive"
+                                                    objectFit="cover"
+                                                />
+                                            </div>
+                                            <div className="col-lg-6 order-lg-1 my-auto showcase-text">
+                                                <h2>{title}</h2>
+                                                <p className="lead mb-0">{text}</p>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
-                                <div className="col-lg-6 order-lg-1 my-auto showcase-text">
-
-                                    <h2>Полностью адаптивный дизайн</h2>
-                                    <p className="lead mb-0">
-                                        Landing Page — это всего лишь HTML и CSS с небольшим использованием SCSS для
-                                        пользователей, которым нужны расширенные возможности настройки. Сразу из коробки
-                                        вы
-                                        можете просто добавить свой контент и изображения — и ваша новая
-                                        лендинг-страница будет
-                                        готова к использованию!
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="row g-0">
-                                <div className="col-lg-6 text-white showcase-img">
-                                    <Image
-                                        src="/bg-showcase-1.jpg"
-                                        alt="..."
-                                        width={300}
-                                        height={400}
-                                        layout="responsive"
-                                        objectFit="cover"
-
-
-                                    />
-                                </div>
-                                <div className="col-lg-6 my-auto showcase-text test">
-                                    <h2>Обновлено для Bootstrap 5</h2>
-                                    <p className="lead mb-0">
-                                        Улучшено и наполнено полезными утилитарными классами — Bootstrap 5 лидирует в
-                                        разработке
-                                        мобильных адаптивных сайтов! Все темы от Start Bootstrap теперь используют
-                                        Bootstrap 5!
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="row g-0">
-                                <div className="col-lg-6 order-lg-2 text-white showcase-img">
-                                    <Image
-                                        src="/bg-showcase-1.jpg"
-                                        alt="..."
-                                        width={300}
-                                        height={400}
-                                        layout="responsive"
-                                        objectFit="cover"
-                                    />
-                                </div>
-                                <div className="col-lg-6 order-lg-1 my-auto showcase-text">
-                                    <h2>Простота использования и настройки</h2>
-                                    <p className="lead mb-0">
-                                        Landing Page — это всего лишь HTML и CSS с небольшим использованием SCSS для
-                                        пользователей, которым нужны расширенные возможности настройки. Сразу из коробки
-                                        вы
-                                        можете просто добавить свой контент и изображения — и ваша новая
-                                        лендинг-страница будет
-                                        готова к использованию!
-                                    </p>
-                                </div>
-                            </div>
-
-
+                            ))}
                         </div>
                     </section>
-
-
                 </Col>
             </Row>
 
-            <Row xl={2} className="justify-content-center">
+
+
+
+
+
+            <Row className="justify-content-center my-5">
                 <Col lg={12}>
-                    <section className="testimonials text-center bg-light ">
+                    <section className="testimonials text-center bg-light py-5">
                         <div className="container">
                             <h2 className="mb-5">Состав команды</h2>
-                            <div className="row d-flex justify-content-between">
-                                <div className="col-lg-2">
-                                    <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                                        <Image src="/telegram-cloud-photo-size-2-3978908276710549647-c.jpg" alt={"..."}
-                                               width={200} height={200} style={imageStyle} layout="responsive">
-                                        </Image>
-                                        <h5>Артём</h5>
-                                        <p className="font-weight-light mb-0">JavaScript программист</p>
+                            <div className="row justify-content-center">
+                                {teamMembers.map((member, index) => (
+                                    <div className="col-6 col-md-4 col-lg-2 mb-4" key={index}>
+                                        <div className="testimonial-item text-center">
+                                            <Image
+                                                src={member.image}
+                                                alt={member.name}
+                                                width={200}
+                                                height={200}
+                                                style={imageStyle}
+                                                layout="responsive"
+                                            />
+                                            <h5 className="mt-3">{member.name}</h5>
+                                            <p className="font-weight-light mb-0">{member.role}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col-lg-2">
-                                    <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                                        <Image src="/5da1ff409f459e8654c8eb93d5ea0b04.jpg" alt={"..."} width={200}
-                                               height={200}
-                                               style={imageStyle} layout="responsive">
-                                        </Image>
-                                        <h5>Алексей</h5>
-                                        <p className="font-weight-light mb-0">PHP программист</p>
-                                    </div>
-                                </div>
-                                <div className="col-lg-2">
-                                    <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                                        <Image src="/telegram-peer-photo-size-2-4394551365959002028-1-0-0.jpg"
-                                               alt={"..."}
-                                               width={200} height={200} style={imageStyle} layout="responsive">
-
-                                        </Image>
-                                        <h5>Сергей</h5>
-                                        <p className="font-weight-light mb-0">Менеджер</p>
-                                    </div>
-                                </div>
-                                <div className="col-lg-2">
-                                    <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                                        <Image src="/telegram-peer-photo-size-2-5433942415187767234-1-0-0.jpg"
-                                               alt={"..."}
-                                               width={200} height={200} style={imageStyle} layout="responsive">
-
-                                        </Image>
-                                        <h5>Егор</h5>
-                                        <p className="font-weight-light mb-0">Тестировщик ПО</p>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-2">
-                                    <div className="testimonial-item mx-auto mb-5 mb-lg-0">
-                                        <Image src="/Anonymous_emblem.svg.png" alt={"..."} width={200} height={200}
-                                               style={imageStyle} layout="responsive">
-
-                                        </Image>
-                                        <h5>Валентин</h5>
-                                        <p className="font-weight-light mb-0">Bitrix программист</p>
-                                    </div>
-                                </div>
-
+                                ))}
                             </div>
                         </div>
                     </section>
                 </Col>
             </Row>
 
-
-            <Row xl={2} className="justify-content-center m-5">
+            <Row className="justify-content-center my-5 px-3">
                 <Container>
-                    <Row>
-                        <Col>
-                            <p>Форма обратной связи</p>
+                    <Row className="align-items-start justify-content-center g-5">
+                        <Col xs={12} lg={5}>
+                            <h4 className="mb-3">Форма обратной связи</h4>
                             <p>Предлагаемый удобный в сопровождении инструмент</p>
-                            <p>По вопросам сотрудничества пишите</p>
-                            <p>
-                                <Row>
-                                    <Col>
-                                        <i className={`bi-mailbox`}> </i><b>Mail:</b> mail@rangeray.ru
-
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <i className={`bi-phone-fill`} ></i><b>Phone:</b> +7(914)484 9962
-                                    </Col>
-                                </Row>
-                            </p>
+                            <p>По вопросам сотрудничества пишите:</p>
+                            <div className="mb-2">
+                                <i className="bi bi-envelope-fill me-2"></i><b>Mail:</b> mail@rangeray.ru
+                            </div>
+                            <div>
+                                <i className="bi bi-phone-fill me-2"></i><b>Phone:</b> +7 (914) 484-9962
+                            </div>
                         </Col>
-                        <Col>
-                            <form>
-                                <Container>
-                                    <Row>
-                                        <Col>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputText2">Имя</label>
-                                                <input type="text" className="form-control" id="exampleInputText2"
-                                                       aria-describedby="emailHelp" placeholder="Имя"/>
 
-                                            </div>
-                                        </Col>
-                                        <Col>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputText1">Фамилия</label>
-                                                <input type="text" className="form-control" id="exampleInputText1"
-                                                       placeholder="Фамилия"/>
-                                            </div>
+                        <Col xs={12} lg={6}>
+                            <form style={{ maxWidth: '500px', margin: '0 auto' }}>
+                                <Row className="mb-3">
+                                    <Col>
+                                        <label htmlFor="firstName" className="form-label">Имя</label>
+                                        <input type="text" className="form-control" id="firstName" placeholder="Имя" />
+                                    </Col>
+                                    <Col>
+                                        <label htmlFor="lastName" className="form-label">Фамилия</label>
+                                        <input type="text" className="form-control" id="lastName" placeholder="Фамилия" />
+                                    </Col>
+                                </Row>
 
-                                        </Col>
+                                <div className="mb-3">
+                                    <label htmlFor="email" className="form-label">Email</label>
+                                    <input type="email" className="form-control" id="email" placeholder="example@email.com" />
+                                </div>
 
+                                <div className="mb-3">
+                                    <label htmlFor="message" className="form-label">Напишите нам вопрос</label>
+                                    <textarea className="form-control" id="message" rows={4} placeholder="Ваш вопрос..." />
+                                </div>
 
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Адрес электронной почты</label>
-                                                <input type="email" className="form-control" id="exampleInputEmail1"
-                                                       placeholder="Email"/>
-                                            </div>
-
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleFormControlTextarea1">Напишите нам вопрос</label>
-                                                <textarea className="form-control" id="exampleFormControlTextarea1"
-                                                          rows="3"></textarea>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col>
-                                            <button type="submit" className="btn btn-primary m-1">Отправить</button>
-                                        </Col>
-                                    </Row>
-                                </Container>
+                                <button type="submit" className="btn btn-primary w-100">Отправить</button>
                             </form>
                         </Col>
                     </Row>
                 </Container>
             </Row>
+
+
 
         </>
     </div>);

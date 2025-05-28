@@ -30,11 +30,9 @@ function Contacts() {
                     <p>Форма обратной связи</p>
                     <p>Предлагаемый удобный в сопровождении инструмент</p>
                     <p>По вопросам сотрудничества пишите</p>
-                    <p>
                         <Row>
                             <Col>
                                 <i className={`bi-mailbox`}> </i><b>Mail:</b> mail@rangeray.ru
-
                             </Col>
                         </Row>
                         <Row>
@@ -42,7 +40,6 @@ function Contacts() {
                                 <i className={`bi-phone-fill`}></i><b>Phone:</b> +7(914)484 9962
                             </Col>
                         </Row>
-                    </p>
                 </Col>
                 <Col>
                     <form>
@@ -81,8 +78,7 @@ function Contacts() {
                                 <Col>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Напишите нам вопрос</label>
-                                        <textarea className="form-control" id="exampleFormControlTextarea1"
-                                                  rows="3"></textarea>
+                                        <textarea className="form-control" id="exampleFormControlTextarea1"></textarea>
                                     </div>
                                 </Col>
                             </Row>
