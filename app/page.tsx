@@ -18,34 +18,40 @@ const imageStyle2 = {
     width: 'auto',
     height: 'auto',
 }
+
+
 const features = [
     {
+        icon: "shield-lock", // Надежность и безопасность
         title: 'Надежность и безопасность',
         description:
             'Все проекты проходят тщательное тестирование и защищены от основных уязвимостей, включая SQL-инъекции, XSS и другие распространённые угрозы.',
     },
     {
+        icon: "phone", // Адаптивный дизайн
         title: 'Адаптивный дизайн',
         description:
             'Мы создаём сайты и приложения, которые отлично работают на любых устройствах — от мобильных телефонов до больших экранов.',
     },
     {
+        icon: "cpu", // Современные технологии
         title: 'Современные технологии',
         description:
             'Используем актуальные стеки и фреймворки, такие как React, Node.js, TypeScript и Kubernetes для масштабируемых и производительных решений.',
     },
     {
+        icon: "person-check", // Индивидуальный подход
         title: 'Индивидуальный подход',
         description:
             'Проектируем интерфейсы и функционал под уникальные потребности каждого клиента, создавая удобные и эффективные решения.',
     },
     {
+        icon: "tools", // Поддержка и сопровождение
         title: 'Поддержка и сопровождение',
         description:
             'Оказываем техническую поддержку и регулярное обновление проектов, чтобы ваши интернет-сервисы всегда оставались современными и работали без сбоев.',
     },
 ];
-
 
 
 const portfolioItems = [
@@ -160,11 +166,6 @@ const showcases = [
 ];
 
 
-
-
-
-
-
 function Home({}: HomeProps) {
     return (<div className="page-wrapper d-flex flex-column min-vh-100">
         <>
@@ -174,7 +175,8 @@ function Home({}: HomeProps) {
                         Разработка и поддержка сайтов
                     </h1>
                     <h2 className="h4 lh-base fw-normal aos-int aos-animate">
-                        "Range-Ray" - интернет-агентство, основная деятельность которого направлена на разработку и поддержку
+                        "Range-Ray" - интернет-агентство, основная деятельность которого направлена на разработку и
+                        поддержку
                         интернет-проектов. Мы можем создать продукт любой сложности - от простого сайта-визитки до
                         интернет-магазина и сервиса недвижимости
                     </h2>
@@ -185,12 +187,18 @@ function Home({}: HomeProps) {
                 <Col lg={12}>
                     <h2 className="h4 text-center mb-4">Наши преимущества</h2>
                     <Container>
-                        <Row className="g-5">
+                        <Row className="g-5 justify-content-center">
                             {features.map((feature, idx) => (
                                 <Col key={idx} lg={3} sm={6}>
                                     <div className="text-center">
-                                        <h3>{feature.title}</h3>
-                                        <p>{feature.description}</p>
+                                        <div className="mb-3">
+                                            <i
+                                                className={`bi bi-${feature.icon} fs-1`}
+                                                style={{color: '#d33c44'}}
+                                            ></i>
+                                        </div>
+                                        <h5>{feature.title}</h5>
+                                        <p className="text-muted">{feature.description}</p>
                                     </div>
                                 </Col>
                             ))}
@@ -322,7 +330,7 @@ function Home({}: HomeProps) {
                 <Col lg={12}>
                     <section className="showcase">
                         <div className="container-fluid p-0">
-                            {showcases.map(({ title, text, image, orderImageFirst }, idx) => (
+                            {showcases.map(({title, text, image, orderImageFirst}, idx) => (
                                 <div key={idx} className="row g-0">
                                     {orderImageFirst ? (
                                         <>
@@ -365,10 +373,6 @@ function Home({}: HomeProps) {
                     </section>
                 </Col>
             </Row>
-
-
-
-
 
 
             <Row className="justify-content-center my-5">
@@ -415,26 +419,29 @@ function Home({}: HomeProps) {
                         </Col>
 
                         <Col xs={12} lg={6}>
-                            <form style={{ maxWidth: '500px', margin: '0 auto' }}>
+                            <form style={{maxWidth: '500px', margin: '0 auto'}}>
                                 <Row className="mb-3">
                                     <Col>
                                         <label htmlFor="firstName" className="form-label">Имя</label>
-                                        <input type="text" className="form-control" id="firstName" placeholder="Имя" />
+                                        <input type="text" className="form-control" id="firstName" placeholder="Имя"/>
                                     </Col>
                                     <Col>
                                         <label htmlFor="lastName" className="form-label">Фамилия</label>
-                                        <input type="text" className="form-control" id="lastName" placeholder="Фамилия" />
+                                        <input type="text" className="form-control" id="lastName"
+                                               placeholder="Фамилия"/>
                                     </Col>
                                 </Row>
 
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">Email</label>
-                                    <input type="email" className="form-control" id="email" placeholder="example@email.com" />
+                                    <input type="email" className="form-control" id="email"
+                                           placeholder="example@email.com"/>
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="message" className="form-label">Напишите нам вопрос</label>
-                                    <textarea className="form-control" id="message" rows={4} placeholder="Ваш вопрос..." />
+                                    <textarea className="form-control" id="message" rows={4}
+                                              placeholder="Ваш вопрос..."/>
                                 </div>
 
                                 <button type="submit" className="btn btn-primary w-100">Отправить</button>
@@ -443,7 +450,6 @@ function Home({}: HomeProps) {
                     </Row>
                 </Container>
             </Row>
-
 
 
         </>
