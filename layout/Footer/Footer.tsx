@@ -5,38 +5,44 @@ import { format } from 'date-fns';
 
 export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
 	return (
-		<footer className={cn(className, styles.footer)} {...props}>
-			<div>
-				OwlTop © 2020 - {format(new Date(), 'yyyy')} Все права защищены
-			</div>
-
-
-			<footer className="footer bg-light">
+			<footer className="footer mt-auto">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-6 h-100 text-center text-lg-start my-auto">
 							<ul className="list-inline mb-2">
-								<li className="list-inline-item"><a href="#!">About</a></li>
+								<li className="list-inline-item">
+									<a href="#!" className={styles.footerLink}>О нас</a>
+								</li>
 								<li className="list-inline-item">⋅</li>
-								<li className="list-inline-item"><a href="#!">Contact</a></li>
+								<li className="list-inline-item">
+									<a href="#!" className={styles.footerLink}>Контакты</a>
+								</li>
 								<li className="list-inline-item">⋅</li>
-								<li className="list-inline-item"><a href="#!">Terms of Use</a></li>
-								<li className="list-inline-item">⋅</li>
-								<li className="list-inline-item"><a href="#!">Privacy Policy</a></li>
+								<li className="list-inline-item">
+									<a href="#!" className={styles.footerLink}>Политика конфиденциальности</a>
+								</li>
 							</ul>
-							<p className="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights
-								Reserved.</p>
+							<p className={`${styles.footerText} small mb-4 mb-lg-0`}>
+								&copy; 2020 - {format(new Date(), 'yyyy')} Все права защищены
+							</p>
 						</div>
+
 						<div className="col-lg-6 h-100 text-center text-lg-end my-auto">
 							<ul className="list-inline mb-0">
 								<li className="list-inline-item me-4">
-									<a href="#!"><i className="bi-facebook fs-3"></i></a>
+									<a href="#!" className={styles.iconLink}>
+										<i className={`bi bi-facebook fs-3 ${styles.facebook}`}></i>
+									</a>
 								</li>
 								<li className="list-inline-item me-4">
-									<a href="#!"><i className="bi-twitter fs-3"></i></a>
+									<a href="#!" className={styles.iconLink}>
+										<i className={`bi bi-twitter fs-3 ${styles.twitter}`}></i>
+									</a>
 								</li>
 								<li className="list-inline-item">
-									<a href="#!"><i className="bi-instagram fs-3"></i></a>
+									<a href="#" className={styles.iconLink}>
+										<i className={`bi bi-instagram fs-3 ${styles.instagram}`}></i>
+									</a>
 								</li>
 							</ul>
 						</div>
@@ -44,6 +50,5 @@ export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
 				</div>
 			</footer>
 
-		</footer>
 	);
 };

@@ -1,0 +1,32 @@
+
+.iconLink:hover {
+    color: #0d6efd; /* или любой цвет при наведении */
+}
+
+.facebook {
+    color: #3b5998;
+}
+
+.twitter {
+    color: #00acee;
+}
+
+.instagram {
+    color: #e1306c;
+}
+
+
+.footerLink {
+    color: #000000;
+    text-decoration: none;
+    margin: 0 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: #ff1e5c; /* или другой hover-цвет */
+}
+
+.footerText {
+    color: #ccc; /* светло-серый для текста "все права защищены" */
+}
