@@ -1,9 +1,9 @@
 import { FooterProps } from './Footer.props';
 import styles from './Footer.module.css';
-import cn from 'classnames';
 import { format } from 'date-fns';
+import { JSX } from 'react';
 
-export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
+export const Footer = ({}: FooterProps): JSX.Element => {
   return (
     <footer className='footer mt-auto'>
       <div className='container'>

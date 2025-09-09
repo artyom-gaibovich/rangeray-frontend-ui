@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { portfolioItems } from '@/libs/data';
 
 export async function GET(
   request: Request,

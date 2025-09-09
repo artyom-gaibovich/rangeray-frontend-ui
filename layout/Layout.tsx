@@ -13,10 +13,10 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
   );
 };
 
-export const withLayout = <T extends Record<string, unknown>>(
+export const withLayout = <T extends object>(
   Component: FunctionComponent<T>
 ) => {
-  return function withLayoutComponent(props: T): JSX.Element {
+  return function WithLayoutComponent(props: T) {
     return (
       <Layout>
         <Component {...props} />

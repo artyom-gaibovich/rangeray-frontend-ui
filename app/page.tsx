@@ -1,5 +1,4 @@
 import { withLayout } from '@/layout/Layout';
-import { ReactNode } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'next/image';
 
@@ -98,11 +97,6 @@ const teamMembers = [
     image: '/5da1ff409f459e8654c8eb93d5ea0b04.jpg',
   },
   {
-    name: 'Сергей',
-    role: 'Менеджер',
-    image: '/telegram-peer-photo-size-2-4394551365959002028-1-0-0.jpg',
-  },
-  {
     name: 'Егор',
     role: 'Тестировщик ПО',
     image: '/telegram-peer-photo-size-2-5433942415187767234-1-0-0.jpg',
@@ -153,7 +147,7 @@ const showcases = [
   },
 ];
 
-function Home({}: HomeProps) {
+function Home() {
   return (
     <div className='page-wrapper d-flex flex-column min-vh-100'>
       <>
@@ -163,10 +157,10 @@ function Home({}: HomeProps) {
               Разработка и поддержка сайтов
             </h1>
             <h2 className='h4 lh-base fw-normal aos-int aos-animate'>
-              "Range-Ray" - интернет-агентство, основная деятельность которого
-              направлена на разработку и поддержку интернет-проектов. Мы можем
-              создать продукт любой сложности - от простого сайта-визитки до
-              интернет-магазина и сервиса недвижимости
+              &#34;Range-Ray&#34; - интернет-агентство, основная деятельность
+              которого направлена на разработку и поддержку интернет-проектов.
+              Мы можем создать продукт любой сложности - от простого
+              сайта-визитки до интернет-магазина и сервиса недвижимости
             </h2>
           </Col>
         </Row>
@@ -472,10 +466,6 @@ function Home({}: HomeProps) {
       </>
     </div>
   );
-}
-
-interface HomeProps extends Record<string, unknown> {
-  children?: ReactNode;
 }
 
 export default withLayout(Home);
