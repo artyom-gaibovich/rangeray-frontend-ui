@@ -94,22 +94,22 @@ const portfolioItems = [
 const teamMembers = [
   {
     name: 'Артём',
-    role: 'JavaScript программист',
+    role: 'Senior Node.js Developer',
     image: '/telegram-cloud-photo-size-2-3978908276710549647-c.jpg',
   },
   {
     name: 'Алексей',
-    role: 'PHP программист',
+    role: 'Senior PHP Developer',
     image: '/5da1ff409f459e8654c8eb93d5ea0b04.jpg',
   },
   {
     name: 'Егор',
-    role: 'Тестировщик ПО',
+    role: 'QA Tester',
     image: '/telegram-peer-photo-size-2-5433942415187767234-1-0-0.jpg',
   },
   {
     name: 'Григорий',
-    role: 'Bitrix программист',
+    role: 'Senior PHP Developer',
     image: '/Anonymous_emblem.svg.png',
   },
 ];
