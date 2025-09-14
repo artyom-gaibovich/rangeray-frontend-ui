@@ -1,55 +1,53 @@
+'use client';
+
 import { withLayout } from '@/layout/Layout';
-import { Col, Container, Row } from 'react-bootstrap';
+import {
+  Container,
+  Grid,
+  Typography,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+} from '@mui/material';
 
 function About() {
   return (
-    <>
-      <section className='page-wrapper d-flex flex-column min-vh-100'>
-        <Row xl={2} className='justify-content-center'>
-          <Col lg={12}>
-            <h2 className='h4 text-center'> О компании</h2>
+    <Box className='page-wrapper d-flex flex-column min-vh-100'>
+      <Container>
+        <Grid container justifyContent='center'>
+          <Grid size={{ xs: 12 }}>
+            <Typography variant='h4' textAlign='center' gutterBottom>
+              О компании
+            </Typography>
 
-            <section>
-              <Container>
-                <p>
-                  &#34;Range-Ray&#34; — ваше цифровое будущее начинается здесь.
-                  Мы — креативное интернет-агентство, специализирующееся на
-                  разработке, поддержке и развитии веб-проектов любой сложности.
-                  От стильных сайтов-визиток до масштабных интернет-магазинов и
-                  полноценных платформ недвижимости — мы превращаем идеи в
-                  эффективные цифровые решения. Наша команда — это разработчики,
-                  дизайнеры, маркетологи и аналитики, которые живут своим делом
-                  и стремятся к одному: сделать ваш бизнес успешным в цифровой
-                  среде. &#34;Range-Ray&#34; — мы не просто делаем сайты, мы
-                  создаём инструменты для роста. Позвольте нам стать вашим
-                  технологическим партнёром!
-                </p>
-                <ul>
-                  <li>
-                    <li>
-                      Индивидуальный подход — каждое решение создаётся под нужды
-                      вашего бизнеса.
-                    </li>
-                    <li>
-                      Современные технологии — мы используем только актуальные и
-                      проверенные инструменты
-                    </li>
-                    <li>
-                      Поддержка 24/7 — ваши проекты всегда под надёжным
-                      контролем.
-                    </li>
-                    <li>
-                      Рост и масштабируемость — закладываем фундамент для
-                      уверенного роста в онлайне.
-                    </li>
-                  </li>
-                </ul>
-              </Container>
-            </section>
-          </Col>
-        </Row>
-      </section>
-    </>
+            <Typography paragraph>
+              "Range-Ray" — ваше цифровое будущее начинается здесь. Мы —
+              креативное интернет-агентство, специализирующееся на разработке,
+              поддержке и развитии веб-проектов любой сложности. От стильных
+              сайтов-визиток до масштабных интернет-магазинов и полноценных
+              платформ недвижимости — мы превращаем идеи в эффективные цифровые
+              решения.
+            </Typography>
+
+            <List>
+              <ListItem>
+                <ListItemText primary='Индивидуальный подход — каждое решение создаётся под нужды бизнеса.' />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary='Современные технологии — только актуальные и проверенные инструменты.' />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary='Поддержка 24/7 — ваши проекты всегда под надёжным контролем.' />
+              </ListItem>
+              <ListItem>
+                <ListItemText primary='Рост и масштабируемость — фундамент для уверенного роста в онлайне.' />
+              </ListItem>
+            </List>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 }
 

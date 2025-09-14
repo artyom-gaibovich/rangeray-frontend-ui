@@ -1,59 +1,102 @@
-import { FooterProps } from './Footer.props';
-import styles from './Footer.module.css';
+'use client';
+
+import {
+  Box,
+  Container,
+  Grid,
+  Link,
+  Typography,
+  IconButton,
+} from '@mui/material';
+import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 import { format } from 'date-fns';
-import { JSX } from 'react';
 
-export const Footer = ({}: FooterProps): JSX.Element => {
+export const Footer = () => {
   return (
-    <footer className='footer mt-auto'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-lg-6 h-100 text-lg-start my-auto text-center'>
-            <ul className='list-inline mb-2'>
-              <li className='list-inline-item'>
-                <a href='#!' className={styles.footerLink}>
-                  О нас
-                </a>
-              </li>
-              <li className='list-inline-item'>⋅</li>
-              <li className='list-inline-item'>
-                <a href='#!' className={styles.footerLink}>
-                  Контакты
-                </a>
-              </li>
-              <li className='list-inline-item'>⋅</li>
-              <li className='list-inline-item'>
-                <a href='#!' className={styles.footerLink}>
-                  Политика конфиденциальности
-                </a>
-              </li>
-            </ul>
-            <p className={`${styles.footerText} small mb-lg-0 mb-4`}>
+    <Box
+      component='footer'
+      sx={{
+        py: 4,
+        mt: 'auto',
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'light' ? '#f5f5f5' : theme.palette.grey[900],
+      }}
+    >
+      <Container maxWidth='lg'>
+        <Grid
+          container
+          spacing={2}
+          alignItems='center'
+          justifyContent='space-between'
+        >
+          {/* Левая часть */}
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{
+              textAlign: { xs: 'center', md: 'left' },
+              mb: { xs: 2, md: 0 },
+            }}
+          >
+            <Box>
+              <Link
+                href='/about'
+                color='inherit'
+                underline='hover'
+                sx={{ mx: 1 }}
+              >
+                О нас
+              </Link>
+              <Link
+                href='/contacts'
+                color='inherit'
+                underline='hover'
+                sx={{ mx: 1 }}
+              >
+                Контакты
+              </Link>
+              <Link
+                href='/privacy'
+                color='inherit'
+                underline='hover'
+                sx={{ mx: 1 }}
+              >
+                Политика конфиденциальности
+              </Link>
+            </Box>
+            <Typography variant='body2' color='text.secondary'>
               &copy; 2020 - {format(new Date(), 'yyyy')} Все права защищены
-            </p>
-          </div>
+            </Typography>
+          </Grid>
 
-          <div className='col-lg-6 h-100 text-lg-end my-auto text-center'>
-            <ul className='list-inline mb-0'>
-              <li className='list-inline-item me-4'>
-                <a href='#!' className={styles.iconLink}>
-                  <i className={`bi bi-facebook fs-3 ${styles.facebook}`}></i>
-                </a>
-              </li>
-              <li className='list-inline-item me-4'>
-                <a href='#!' className={styles.iconLink}>
-                  <i className={`bi bi-twitter fs-3 ${styles.twitter}`}></i>
-                </a>
-              </li>
-              <li className='list-inline-item'>
-                <a href='#' className={styles.iconLink}>
-                  <i className={`bi bi-instagram fs-3 ${styles.instagram}`}></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+          {/* Правая часть */}
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{ textAlign: { xs: 'center', md: 'right' } }}
+          >
+            <IconButton
+              href='https://facebook.com'
+              target='_blank'
+              color='primary'
+            >
+              <Facebook />
+            </IconButton>
+            <IconButton
+              href='https://twitter.com'
+              target='_blank'
+              color='primary'
+            >
+              <Twitter />
+            </IconButton>
+            <IconButton
+              href='https://instagram.com'
+              target='_blank'
+              color='primary'
+            >
+              <Instagram />
+            </IconButton>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };

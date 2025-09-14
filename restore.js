@@ -258,4 +258,4 @@ async function createSnapshot(directoryPath, outputFile, options = {}) {
 const snapshotFile = process.argv[2] || './snapshot.txt';
 const restoreDirectory = process.argv[3] || './restored';
 
-createSnapshot('./layout', 'snapshot.txt');
+createSnapshot('./app/projects', 'snapshot.txt');

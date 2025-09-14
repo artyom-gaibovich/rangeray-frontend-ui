@@ -1,64 +1,82 @@
-import { Metadata } from 'next';
+'use client';
+
 import { withLayout } from '@/layout/Layout';
-import { notFound } from 'next/navigation';
-import { Col, Row } from 'react-bootstrap';
+import { useParams } from 'next/navigation';
+import { Grid, Typography, Box } from '@mui/material';
 import Image from 'next/image';
 
-interface ProjectItem {
-  id: number;
-  title: string;
-  description: string;
-  updated: string;
-  image: string;
-  content: string;
-}
+const portfolioItems = [
+  {
+    id: 1,
+    title: 'Сайт PHP',
+    description:
+      'Интеграция с CRM Bitrix Интеграция с CRM BitrixИнтеграция с CRM BitrixИнтеграция с CRM BitrixИнтеграция с CRM Bitrix',
+    updated: '5 мин',
+    image: '/sitew_og.png',
+  },
+  {
+    id: 2,
+    title: 'Сайт PHP',
+    description: 'Интеграция с CRM Bitrix',
+    updated: '5 мин',
+    image: '/sitew_og.png',
+  },
+  {
+    id: 3,
+    title: 'Сайт PHP',
+    description: 'Интеграция с CRM Bitrix',
+    updated: '5 мин',
+    image: '/sitew_og.png',
+  },
+  {
+    id: 4,
+    title: 'Сайт PHP',
+    description: 'Интеграция с CRM Bitrix',
+    updated: '5 мин',
+    image: '/sitew_og.png',
+  },
+  {
+    id: 5,
+    title: 'Сайт PHP',
+    description: 'Интеграция с CRM Bitrix',
+    updated: '5 мин',
+    image: '/sitew_og.png',
+  },
+];
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}): Promise<Metadata> {
-  const { id } = await params;
+function ProjectDetail() {
+  const params = useParams();
+  const item = portfolioItems.find((p) => p.id === Number(params.id));
 
-  const res = await fetch(`http://localhost:3001/api/projects/${id}`);
-  if (!res.ok) {
-    notFound();
+  if (!item) {
+    return <Typography variant='h6'>Проект не найден</Typography>;
   }
-  const item: ProjectItem = await res.json();
-  return {
-    title: `${item.title} | Портфолио`,
-    description: item.description,
-  };
-}
-
-async function ProjectDetail({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const res = await fetch(`http://localhost:3001/api/projects/${id}`);
-  const item: ProjectItem = await res.json();
 
   return (
-    <>
-      <article className='min-vh-100 container py-5'>
-        <Row className='g-4'>
-          <Col sm={6} md={6} lg={6}>
-            <Image
-              className='card-img-top'
-              src={item.image}
-              alt={item.title}
-              width={500}
-              height={500}
-              style={{ objectFit: 'cover', height: '250px' }}
-            />
-          </Col>
-          <Col className='p-6'>
-            <h1 className='mb-2 text-2xl font-bold'>{item.title}</h1>
-            <span className='text-sm text-gray-500'>{item.updated}</span>
-            <p className='mb-4 text-gray-600'>{item.description}</p>
-            <p>{item.content}</p>
-          </Col>
-        </Row>
-      </article>
-    </>
+    <Box className='min-vh-100' sx={{ py: 5, px: { xs: 2, md: 5 } }}>
+      <Grid container spacing={4}>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Image
+            src={item.image}
+            alt={item.title}
+            width={500}
+            height={500}
+            style={{ objectFit: 'cover', width: '100%', height: '250px' }}
+          />
+        </Grid>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Typography variant='h4' gutterBottom>
+            {item.title}
+          </Typography>
+          <Typography variant='caption' color='text.secondary' gutterBottom>
+            {item.updated}
+          </Typography>
+          <Typography variant='body1' gutterBottom>
+            {item.description}
+          </Typography>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 
