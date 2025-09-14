@@ -12,11 +12,6 @@ import {
   Typography,
 } from '@mui/material';
 
-const imageStyle = {
-  border: '1px solid #fff',
-  width: '100%',
-};
-
 function Contacts() {
   const formAction = async (formData: FormData) => {
     console.log('formData', formData);

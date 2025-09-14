@@ -212,8 +212,8 @@ function Home() {
             Разработка и поддержка сайтов
           </Typography>
           <Typography variant='h5' color='text.secondary'>
-            "Range-Ray" - интернет-агентство, создаем проекты любой сложности —
-            от визитки до интернет-магазина и платформ недвижимости.
+            &#34;Range-Ray&#34; - интернет-агентство, создаем проекты любой
+            сложности — от визитки до интернет-магазина и платформ недвижимости.
           </Typography>
         </Grid>
       </Grid>
@@ -255,8 +255,8 @@ function Home() {
           Результат нашей работы
         </Typography>
         <Grid container spacing={4} justifyContent='center'>
-          {portfolioItems.map((item) => (
-            <Grid key={item.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+          {portfolioItems.map((item, i) => (
+            <Grid key={i} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
               <Card sx={{ height: '100%' }}>
                 <CardMedia>
                   <Image
