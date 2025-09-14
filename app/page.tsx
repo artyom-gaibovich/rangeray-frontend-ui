@@ -102,7 +102,7 @@ const teamMembers = [
     image: '/telegram-peer-photo-size-2-5433942415187767234-1-0-0.jpg',
   },
   {
-    name: 'Валентин',
+    name: 'Григорий',
     role: 'Bitrix программист',
     image: '/Anonymous_emblem.svg.png',
   },
