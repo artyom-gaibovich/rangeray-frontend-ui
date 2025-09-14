@@ -1,13 +1,19 @@
-import { withLayout } from '@/layout/Layout';
-import { Col, Container, Row } from 'react-bootstrap';
-import Image from 'next/image';
+'use client';
 
-const imageStyle = {
-  borderRadius: '50%',
-  border: '1px solid #fff',
-  width: '100px',
-  height: 'auto',
-};
+import { withLayout } from '@/layout/Layout';
+import {
+  Box,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  TextField,
+  Button,
+} from '@mui/material';
+import Image from 'next/image';
+import { TechCard } from '@/components/TechCard/TechCard';
 
 const features = [
   {
@@ -147,325 +153,304 @@ const showcases = [
   },
 ];
 
+const techStackData = [
+  {
+    title: 'Языки программирования',
+    techs: [
+      { name: 'PHP' },
+      { name: 'NodeJS' },
+      { name: 'Golang' },
+      { name: 'Python' },
+    ],
+  },
+  {
+    title: 'Базы данных',
+    techs: [{ name: 'PostgreSQL' }, { name: 'MySQL' }, { name: 'MongoDB' }],
+  },
+  {
+    title: 'Фреймворки',
+    techs: [
+      { name: 'NestJS' },
+      { name: 'React' },
+      { name: 'Next.js' },
+      { name: 'Laravel' },
+    ],
+  },
+  {
+    title: 'Системы',
+    techs: [{ name: 'Docker' }, { name: 'Kubernetes' }, { name: 'Linux' }],
+  },
+  {
+    title: 'Обработка данных',
+    techs: [{ name: 'Redis' }, { name: 'RabbitMQ' }, { name: 'ElasticSearch' }],
+  },
+  {
+    title: 'CI/CD',
+    techs: [
+      { name: 'GitHub Actions' },
+      { name: 'GitLab CI' },
+      { name: 'Jenkins' },
+    ],
+  },
+];
 function Home() {
   return (
-    <div className='page-wrapper d-flex flex-column min-vh-100'>
-      <>
-        <Row xl={2} className='justify-content-center'>
-          <Col lg={12}>
-            <h1 className='heading display-3 aos-init aos-animate mb-4'>
-              Разработка и поддержка сайтов
-            </h1>
-            <h2 className='h4 lh-base fw-normal aos-int aos-animate'>
-              &#34;Range-Ray&#34; - интернет-агентство, основная деятельность
-              которого направлена на разработку и поддержку интернет-проектов.
-              Мы можем создать продукт любой сложности - от простого
-              сайта-визитки до интернет-магазина и сервиса недвижимости
-            </h2>
-          </Col>
-        </Row>
+    <Box
+      className='page-wrapper'
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        py: 5,
+        px: { xs: 2, md: 5 },
+      }}
+    >
+      {/* Hero Section */}
+      <Grid container justifyContent='center' spacing={4} mb={5}>
+        <Grid size={{ xs: 12, lg: 12 }} textAlign='center'>
+          <Typography variant='h2' gutterBottom>
+            Разработка и поддержка сайтов
+          </Typography>
+          <Typography variant='h5' color='text.secondary'>
+            "Range-Ray" - интернет-агентство, создаем проекты любой сложности —
+            от визитки до интернет-магазина и платформ недвижимости.
+          </Typography>
+        </Grid>
+      </Grid>
 
-        <Row className='justify-content-center'>
-          <Col lg={12}>
-            <h2 className='h4 mb-4 text-center'>Наши преимущества</h2>
-            <Container>
-              <Row className='g-5 justify-content-center'>
-                {features.map((feature, idx) => (
-                  <Col key={idx} lg={3} sm={6}>
-                    <div className='text-center'>
-                      <div className='mb-3'>
-                        <i
-                          className={`bi bi-${feature.icon} fs-1`}
-                          style={{ color: '#d33c44' }}
-                        ></i>
-                      </div>
-                      <h5>{feature.title}</h5>
-                      <p className='text-muted'>{feature.description}</p>
-                    </div>
-                  </Col>
-                ))}
-              </Row>
-            </Container>
-          </Col>
-        </Row>
+      {/* Features */}
+      <Grid container justifyContent='center' spacing={4} mb={5}>
+        {features.map((feature, idx) => (
+          <Grid key={idx} size={{ xs: 12, sm: 6, md: 3 }} textAlign='center'>
+            <Box sx={{ mb: 2 }}>
+              <i
+                className={`bi bi-${feature.icon} fs-1`}
+                style={{ color: '#d33c44' }}
+              />
+            </Box>
+            <Typography variant='h6'>{feature.title}</Typography>
+            <Typography variant='body2' color='text.secondary'>
+              {feature.description}
+            </Typography>
+          </Grid>
+        ))}
+      </Grid>
 
-        <Row className='justify-content-center m-5'>
-          <Col lg={12}>
-            <Container>
-              <Row className='justify-content-center pb-2 text-center'>
-                <h2 className='display-6 fw-bold mb-1'>Портфолио</h2>
-                <p className='lead text-muted mb-4'>Результат нашей работы</p>
-              </Row>
-              <div className='d-flex justify-content-center flex-wrap gap-4'>
-                {portfolioItems.map((item, idx) => (
-                  <div key={idx} className='card' style={{ width: '18rem' }}>
-                    <Image
-                      className='card-img-top'
-                      src={item.image}
-                      alt='...'
-                      width={500}
-                      height={500}
-                      style={{ objectFit: 'cover' }}
-                    />
+      {/* Portfolio */}
+      <Box mb={5}>
+        <Typography
+          variant='h4'
+          fontWeight='bold'
+          textAlign='center'
+          gutterBottom
+        >
+          Портфолио
+        </Typography>
+        <Typography
+          variant='subtitle1'
+          color='text.secondary'
+          textAlign='center'
+          mb={4}
+        >
+          Результат нашей работы
+        </Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {portfolioItems.map((item) => (
+            <Grid key={item.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+              <Card sx={{ height: '100%' }}>
+                <CardMedia>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={500}
+                    height={500}
+                    style={{ objectFit: 'cover', width: '100%', height: 250 }}
+                  />
+                </CardMedia>
+                <CardContent>
+                  <Typography variant='h6'>{item.title}</Typography>
+                  <Typography variant='body2' color='text.secondary'>
+                    {item.description}
+                  </Typography>
+                  <Typography variant='caption' color='text.secondary'>
+                    Технологии: {item.techStack.join(', ')}
+                  </Typography>
+                  {item.updated && (
+                    <Typography
+                      variant='caption'
+                      color='text.secondary'
+                      display='block'
+                    >
+                      Последнее обновление: {item.updated}
+                    </Typography>
+                  )}
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
 
-                    <div className='card-body d-flex flex-column'>
-                      <h5 className='card-title'>{item.title}</h5>
-                      <p className='card-text flex-grow-1'>
-                        {item.description}
-                      </p>
-                      <p className='card-text'>
-                        <small className='text-muted'>
-                          Технологии: {item.techStack.join(', ')}
-                        </small>
-                      </p>
-                      {item.updated && (
-                        <p className='card-text'>
-                          <small className='text-muted'>
-                            Последнее обновление: {item.updated}
-                          </small>
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Container>
-          </Col>
-        </Row>
-        {/*         <Row xl={2} className="justify-content-center m-5">
-                <Col lg={12}>
-                    <section>
-                        <Container>
-                            <Row className="pb-2 justify-content-center">
-                                <Col md={7} className="text-center"></Col>
-                                <h2 className="text-center display-6 mb-1 fw-bold">Портфолио</h2>
-                                <p className="lead text-center text-muted mb-4">Результат нашей работы</p>
-                            </Row>
-                            <div className="d-flex gap-5">
-                                <div className="card">
-                                    <Image className="card-img-top" src={'/sitew_og.png'} alt={'...'} width={500}
-                                           height={500}
-                                           style={imageStyle2}/>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Сайт PHP</h5>
-                                        <p className="card-text">Интеграция с CRM Bitrix</p>
-                                        <p className="card-text"><small className="text-muted">Время последнего
-                                            обновления 5 мин</small>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <Image className="card-img-top" src={'/sitew_og.png'} alt={'...'} width={500}
-                                           height={500}
-                                           style={imageStyle2}/>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Сайт PHP</h5>
-                                        <p className="card-text">Интеграция с CRM Bitrix</p>
-                                        <p className="card-text"><small className="text-muted">Время последнего
-                                            обновления 5 мин</small>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <Image className="card-img-top" src={'/sitew_og.png'} alt={'...'} width={500}
-                                           height={500}
-                                           style={imageStyle2}/>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Сайт PHP</h5>
-                                        <p className="card-text">Интеграция с CRM Bitrix</p>
-                                        <p className="card-text"><small className="text-muted">Время последнего
-                                            обновления 5 мин</small>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <Image className="card-img-top" src={'/sitew_og.png'} alt={'...'} width={500}
-                                           height={500}
-                                           style={imageStyle2}/>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Сайт PHP</h5>
-                                        <p className="card-text">Интеграция с CRM Bitrix</p>
-                                        <p className="card-text"><small className="text-muted">Время последнего
-                                            обновления 5 мин</small>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <Image className="card-img-top" src={'/sitew_og.png'} alt={'...'} width={500}
-                                           height={500}
-                                           style={imageStyle2}/>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Сайт PHP</h5>
-                                        <p className="card-text">Интеграция с CRM Bitrix</p>
-                                        <p className="card-text"><small className="text-muted">Время последнего
-                                            обновления 5 мин</small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </Container>
+      {/* Showcases */}
+      <Box mb={5}>
+        {showcases.map(({ title, text, image, orderImageFirst }, idx) => (
+          <Grid container spacing={2} key={idx} mb={4} alignItems='center'>
+            {orderImageFirst && (
+              <>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <Image
+                    src={image}
+                    alt={title}
+                    width={300}
+                    height={400}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <Typography variant='h5' gutterBottom>
+                    {title}
+                  </Typography>
+                  <Typography variant='body1'>{text}</Typography>
+                </Grid>
+              </>
+            )}
+            {!orderImageFirst && (
+              <>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <Typography variant='h5' gutterBottom>
+                    {title}
+                  </Typography>
+                  <Typography variant='body1'>{text}</Typography>
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <Image
+                    src={image}
+                    alt={title}
+                    width={300}
+                    height={400}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </Grid>
+              </>
+            )}
+          </Grid>
+        ))}
+      </Box>
 
-                    </section>
-                </Col>
-            </Row>*/}
+      <Box mb={5}>
+        <Typography
+          variant='h4'
+          fontWeight='bold'
+          textAlign='center'
+          gutterBottom
+        >
+          Наш технологический стек
+        </Typography>
+        <Typography
+          variant='subtitle1'
+          color='text.secondary'
+          textAlign='center'
+          mb={4}
+        >
+          Мы используем современные технологии для разработки и поддержки
+          проектов
+        </Typography>
 
-        <Row xl={2} className='justify-content-center g-5'>
-          <Col lg={12}>
-            <section className='showcase'>
-              <div className='container-fluid p-0'>
-                {showcases.map(
-                  ({ title, text, image, orderImageFirst }, idx) => (
-                    <div key={idx} className='row g-0'>
-                      {orderImageFirst ? (
-                        <>
-                          <div className='col-lg-6 showcase-img text-white'>
-                            <Image
-                              src={image}
-                              alt={title}
-                              width={300}
-                              height={400}
-                              layout='responsive'
-                              objectFit='cover'
-                            />
-                          </div>
-                          <div className='col-lg-6 showcase-text my-auto'>
-                            <h2>{title}</h2>
-                            <p className='lead mb-0'>{text}</p>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className='col-lg-6 order-lg-2 showcase-img text-white'>
-                            <Image
-                              src={image}
-                              alt={title}
-                              width={300}
-                              height={400}
-                              layout='responsive'
-                              objectFit='cover'
-                            />
-                          </div>
-                          <div className='col-lg-6 order-lg-1 showcase-text my-auto'>
-                            <h2>{title}</h2>
-                            <p className='lead mb-0'>{text}</p>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  )
-                )}
-              </div>
-            </section>
-          </Col>
-        </Row>
+        <Grid container spacing={4}>
+          {techStackData.map((section, idx) => (
+            <Grid key={idx} size={{ xs: 12, sm: 6, md: 4 }}>
+              <TechCard title={section.title} techs={section.techs} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
 
-        <Row className='justify-content-center my-5'>
-          <Col lg={12}>
-            <section className='testimonials bg-light py-5 text-center'>
-              <div className='container'>
-                <h2 className='mb-5'>Состав команды</h2>
-                <div className='row justify-content-center'>
-                  {teamMembers.map((member, index) => (
-                    <div className='col-6 col-md-4 col-lg-2 mb-4' key={index}>
-                      <div className='testimonial-item text-center'>
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          width={200}
-                          height={200}
-                          style={imageStyle}
-                          layout='responsive'
-                        />
-                        <h5 className='mt-3'>{member.name}</h5>
-                        <p className='font-weight-light mb-0'>{member.role}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          </Col>
-        </Row>
+      {/* Team */}
+      <Box mb={5} textAlign='center'>
+        <Typography variant='h4' mb={4}>
+          Состав команды
+        </Typography>
+        <Grid container spacing={4} justifyContent='center'>
+          {teamMembers.map((member, idx) => (
+            <Grid key={idx} size={{ xs: 6, md: 4, lg: 2 }} textAlign='center'>
+              <Image
+                src={member.image}
+                alt={member.name}
+                width={200}
+                height={200}
+                style={{ borderRadius: '50%', width: '100%', height: 'auto' }}
+              />
+              <Typography variant='h6' mt={2}>
+                {member.name}
+              </Typography>
+              <Typography variant='body2' color='text.secondary'>
+                {member.role}
+              </Typography>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
 
-        <Row className='justify-content-center my-5 px-3'>
-          <Container>
-            <Row className='align-items-start justify-content-center g-5'>
-              <Col xs={12} lg={5}>
-                <h4 className='mb-3'>Форма обратной связи</h4>
-                <p>Предлагаемый удобный в сопровождении инструмент</p>
-                <p>По вопросам сотрудничества пишите:</p>
-                <div className='mb-2'>
-                  <i className='bi bi-envelope-fill me-2'></i>
-                  <b>Mail:</b> mail@rangeray.ru
-                </div>
-                <div>
-                  <i className='bi bi-phone-fill me-2'></i>
-                  <b>Phone:</b> +7 (914) 484-9962
-                </div>
-              </Col>
+      {/* Contact Form */}
+      <Box mb={5}>
+        <Container maxWidth='md'>
+          <Grid container spacing={4}>
+            <Grid size={{ xs: 12, lg: 5 }}>
+              <Typography variant='h5' mb={2}>
+                Форма обратной связи
+              </Typography>
+              <Typography variant='body2' mb={1}>
+                Предлагаемый удобный в сопровождении инструмент
+              </Typography>
+              <Typography variant='body2' mb={2}>
+                По вопросам сотрудничества пишите:
+              </Typography>
+              <Typography variant='body2'>
+                <b>Mail:</b> mail@rangeray.ru
+              </Typography>
+              <Typography variant='body2'>
+                <b>Phone:</b> +7 (914) 484-9962
+              </Typography>
+            </Grid>
 
-              <Col xs={12} lg={6}>
-                <form style={{ maxWidth: '500px', margin: '0 auto' }}>
-                  <Row className='mb-3'>
-                    <Col>
-                      <label htmlFor='firstName' className='form-label'>
-                        Имя
-                      </label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='firstName'
-                        placeholder='Имя'
-                      />
-                    </Col>
-                    <Col>
-                      <label htmlFor='lastName' className='form-label'>
-                        Фамилия
-                      </label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='lastName'
-                        placeholder='Фамилия'
-                      />
-                    </Col>
-                  </Row>
-
-                  <div className='mb-3'>
-                    <label htmlFor='email' className='form-label'>
-                      Email
-                    </label>
-                    <input
-                      type='email'
-                      className='form-control'
-                      id='email'
-                      placeholder='example@email.com'
-                    />
-                  </div>
-
-                  <div className='mb-3'>
-                    <label htmlFor='message' className='form-label'>
-                      Напишите нам вопрос
-                    </label>
-                    <textarea
-                      className='form-control'
-                      id='message'
-                      rows={4}
-                      placeholder='Ваш вопрос...'
-                    />
-                  </div>
-
-                  <button type='submit' className='btn btn-primary w-100'>
-                    Отправить
-                  </button>
-                </form>
-              </Col>
-            </Row>
-          </Container>
-        </Row>
-      </>
-    </div>
+            <Grid size={{ xs: 12, lg: 7 }}>
+              <Box
+                component='form'
+                sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+              >
+                <Grid container spacing={2}>
+                  <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField fullWidth label='Имя' variant='outlined' />
+                  </Grid>
+                  <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField fullWidth label='Фамилия' variant='outlined' />
+                  </Grid>
+                </Grid>
+                <TextField fullWidth label='Email' variant='outlined' />
+                <TextField
+                  fullWidth
+                  label='Ваш вопрос...'
+                  multiline
+                  rows={4}
+                  variant='outlined'
+                />
+                <Button variant='contained' color='primary' fullWidth>
+                  Отправить
+                </Button>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </Box>
   );
 }
-
 export default withLayout(Home);
