@@ -1,5 +1,14 @@
+'use client';
+
 import { withLayout } from '@/layout/Layout';
-import { Col, Container, Row } from 'react-bootstrap';
+import {
+  Container,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+} from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -44,49 +53,62 @@ const portfolioItems = [
 
 function Projects() {
   return (
-    <>
-      <section className='page-wrapper d-flex flex-column min-vh-100 py-5'>
-        <Container>
-          <Row className='justify-content-center pb-2 text-center'>
-            <Col md={7}>
-              <h2 className='display-6 fw-bold mb-1'>Портфолио</h2>
-              <p className='lead text-muted mb-4'>Результат нашей работы</p>
-            </Col>
-          </Row>
-          <Row className='g-4'>
-            {portfolioItems.map((item, index) => (
-              <Col key={index} xs={12} sm={6} md={4} lg={3}>
-                <Link
-                  href={`/projects/${item.id}`}
-                  className='text-decoration-none text-reset'
-                >
-                  <div className='card h-100'>
+    <section className='page-wrapper d-flex flex-column min-vh-100 py-5'>
+      <Container>
+        <Grid
+          container
+          justifyContent='center'
+          textAlign='center'
+          spacing={2}
+          mb={4}
+        >
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Typography variant='h4' fontWeight='bold'>
+              Портфолио
+            </Typography>
+            <Typography variant='subtitle1' color='text.secondary'>
+              Результат нашей работы
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={4}>
+          {portfolioItems.map((item) => (
+            <Grid key={item.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+              <Link
+                href={`/projects/${item.id}`}
+                style={{ textDecoration: 'none', color: 'inherit' }}
+              >
+                <Card sx={{ height: '100%' }}>
+                  <CardMedia>
                     <Image
-                      className='card-img-top'
                       src={item.image}
                       alt={item.title}
                       width={500}
                       height={500}
-                      style={{ objectFit: 'cover', height: '250px' }}
+                      style={{
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: '250px',
+                      }}
                     />
-                    <div className='card-body'>
-                      <h5 className='card-title'>{item.title}</h5>
-                      <p className='card-text'>{item.description}</p>
-                      <p className='card-text'>
-                        <small className='text-muted'>
-                          Время последнего обновления {item.updated}
-                        </small>
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
-      );
-    </>
+                  </CardMedia>
+                  <CardContent>
+                    <Typography variant='h6'>{item.title}</Typography>
+                    <Typography variant='body2' color='text.secondary'>
+                      {item.description}
+                    </Typography>
+                    <Typography variant='caption' color='text.secondary'>
+                      Время последнего обновления {item.updated}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </section>
   );
 }
 

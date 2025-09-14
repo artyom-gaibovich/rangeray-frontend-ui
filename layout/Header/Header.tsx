@@ -1,40 +1,126 @@
-import { HeaderProps } from './Header.props';
-import { JSX } from 'react';
-import { Container, Nav, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
+'use client';
+
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Grid,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
-export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
+const navLinks = [
+  { label: 'О нас', href: '/about' },
+  { label: 'Контакты', href: '/contacts' },
+  { label: 'Проекты', href: '/projects' },
+];
+
+export const Header = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   return (
     <>
-      <Navbar
-        bg='light'
-        className='navbar navbar-light bg-light static-top'
-        data-bs-theme='light'
+      <AppBar position='static' color='default' elevation={1}>
+        <Toolbar>
+          <Grid container alignItems='center'>
+            {/* Лого */}
+            <Grid size={{ xs: 6, md: 3 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Link
+                  href='/'
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
+                >
+                  <Image src='/logo.svg' alt='logo' width={40} height={40} />
+                  <Typography variant='h6' sx={{ ml: 1 }}>
+                    RangeRay
+                  </Typography>
+                </Link>
+              </Box>
+            </Grid>
+
+            {/* Навигация (desktop) */}
+            <Grid
+              size={{ xs: 0, md: 9 }}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                justifyContent: 'flex-end',
+                gap: 2,
+              }}
+            >
+              {navLinks.map((link) => (
+                <Button
+                  key={link.href}
+                  component={Link}
+                  href={link.href}
+                  color='inherit'
+                >
+                  {link.label}
+                </Button>
+              ))}
+            </Grid>
+
+            {/* Бургер-меню (mobile) */}
+            <Grid
+              size={{ xs: 6, md: 0 }}
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                justifyContent: 'flex-end',
+              }}
+            >
+              <IconButton
+                edge='end'
+                color='inherit'
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+
+      {/* Drawer для мобильного меню */}
+      <Drawer
+        anchor='right'
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        sx={{
+          '& .MuiDrawer-paper': { width: 240 },
+        }}
       >
-        <Container>
-          <Link className='navbar-brand' href='/'>
-            <Image src={'/logo.svg'} alt={'logo'} width={40} height={40} />
-            RangeRay
-          </Link>
-
-          <div className='navbar-collapse collapse' id='navbarNavAltMarkup'>
-            <Nav>
-              <Link className='nav-item nav-link active' href='/about'>
-                О нас
-              </Link>
-
-              <Link className='nav-item nav-link' href='/contacts'>
-                Контакты
-              </Link>
-
-              <Link className='nav-item nav-link' href='/projects'>
-                Проекты
-              </Link>
-            </Nav>
-          </div>
-        </Container>
-      </Navbar>
+        <List>
+          {navLinks.map((link) => (
+            <ListItem key={link.href} disablePadding>
+              <ListItemButton
+                component={Link}
+                href={link.href}
+                onClick={handleDrawerToggle}
+              >
+                <ListItemText primary={link.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
     </>
   );
 };
