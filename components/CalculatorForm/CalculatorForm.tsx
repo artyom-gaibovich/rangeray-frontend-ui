@@ -54,7 +54,8 @@ const CalculatorForm = () => {
             value='+'
             type='operation'
             onClick={() => setValue(value + '+')}
-          />43
+          />
+          43
         </div>
         <div className='col-4'>
           <CalculatorButton
