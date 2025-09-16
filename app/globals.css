@@ -24,3 +24,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.nav-link-text {
+    color: #A5D6FF; /* базовый цвет */
+}
+
+.nav-link-text:hover {
+    color: #FFFFFF; /* при наведении */
+}

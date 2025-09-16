@@ -100,7 +100,7 @@ const teamMembers = [
   {
     name: 'Алексей',
     role: 'Senior PHP Developer',
-    image: '/5da1ff409f459e8654c8eb93d5ea0b04.jpg',
+    image: '/alexey.jpg',
   },
   {
     name: 'Егор',
@@ -219,7 +219,7 @@ function Home() {
       </Grid>
 
       {/* Features */}
-      <Grid container justifyContent='center' spacing={4} mb={5}>
+      {/*<Grid container justifyContent='center' spacing={4} mb={5}>
         {features.map((feature, idx) => (
           <Grid key={idx} size={{ xs: 12, sm: 6, md: 3 }} textAlign='center'>
             <Box sx={{ mb: 2 }}>
@@ -234,7 +234,7 @@ function Home() {
             </Typography>
           </Grid>
         ))}
-      </Grid>
+      </Grid>*/}
 
       {/* Portfolio */}
       <Box mb={5}>
@@ -292,7 +292,7 @@ function Home() {
       </Box>
 
       {/* Showcases */}
-      <Box mb={5}>
+      {/* <Box mb={5}>
         {showcases.map(({ title, text, image, orderImageFirst }, idx) => (
           <Grid container spacing={2} key={idx} mb={4} alignItems='center'>
             {orderImageFirst && (
@@ -343,9 +343,9 @@ function Home() {
             )}
           </Grid>
         ))}
-      </Box>
+      </Box>*/}
 
-      <Box mb={5}>
+      {/*<Box mb={5}>
         <Typography
           variant='h4'
           fontWeight='bold'
@@ -371,7 +371,7 @@ function Home() {
             </Grid>
           ))}
         </Grid>
-      </Box>
+      </Box>*/}
 
       {/* Team */}
       <Box mb={5} textAlign='center'>
