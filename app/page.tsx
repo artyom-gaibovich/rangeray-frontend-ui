@@ -193,6 +193,21 @@ const techStackData = [
     ],
   },
 ];
+
+function Section({
+  children,
+  narrow = false, // если нужно более узкий контейнер (например, форма)
+}: {
+  children: React.ReactNode;
+  narrow?: boolean;
+}) {
+  return (
+    <Box component='section' sx={{ py: 8 }}>
+      <Container maxWidth={narrow ? 'md' : 'lg'}>{children}</Container>
+    </Box>
+  );
+}
+
 function Home() {
   return (
     <Box
@@ -206,38 +221,23 @@ function Home() {
       }}
     >
       {/* Hero Section */}
-      <Grid container justifyContent='center' spacing={4} mb={5}>
-        <Grid size={{ xs: 12, lg: 12 }} textAlign='center'>
-          <Typography variant='h2' gutterBottom>
-            Разработка и поддержка сайтов
-          </Typography>
-          <Typography variant='h5' color='text.secondary'>
-            &#34;Range-Ray&#34; - интернет-агентство, создаем проекты любой
-            сложности — от визитки до интернет-магазина и платформ недвижимости.
-          </Typography>
-        </Grid>
-      </Grid>
-
-      {/* Features */}
-      {/*<Grid container justifyContent='center' spacing={4} mb={5}>
-        {features.map((feature, idx) => (
-          <Grid key={idx} size={{ xs: 12, sm: 6, md: 3 }} textAlign='center'>
-            <Box sx={{ mb: 2 }}>
-              <i
-                className={`bi bi-${feature.icon} fs-1`}
-                style={{ color: '#d33c44' }}
-              />
-            </Box>
-            <Typography variant='h6'>{feature.title}</Typography>
-            <Typography variant='body2' color='text.secondary'>
-              {feature.description}
+      <Section>
+        <Grid container justifyContent='center' spacing={4} mb={5}>
+          <Grid size={{ xs: 12, lg: 12 }} textAlign='center'>
+            <Typography variant='h2' gutterBottom>
+              Разработка и поддержка сайтов
+            </Typography>
+            <Typography variant='h5' color='text.secondary'>
+              &#34;Range-Ray&#34; - интернет-агентство, создаем проекты любой
+              сложности — от визитки до интернет-магазина и платформ
+              недвижимости.
             </Typography>
           </Grid>
-        ))}
-      </Grid>*/}
+        </Grid>
+      </Section>
 
       {/* Portfolio */}
-      <Box mb={5}>
+      <Section>
         <Typography
           variant='h4'
           fontWeight='bold'
@@ -289,105 +289,39 @@ function Home() {
             </Grid>
           ))}
         </Grid>
-      </Box>
-
-      {/* Showcases */}
-      {/* <Box mb={5}>
-        {showcases.map(({ title, text, image, orderImageFirst }, idx) => (
-          <Grid container spacing={2} key={idx} mb={4} alignItems='center'>
-            {orderImageFirst && (
-              <>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <Image
-                    src={image}
-                    alt={title}
-                    width={300}
-                    height={400}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </Grid>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <Typography variant='h5' gutterBottom>
-                    {title}
-                  </Typography>
-                  <Typography variant='body1'>{text}</Typography>
-                </Grid>
-              </>
-            )}
-            {!orderImageFirst && (
-              <>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <Typography variant='h5' gutterBottom>
-                    {title}
-                  </Typography>
-                  <Typography variant='body1'>{text}</Typography>
-                </Grid>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <Image
-                    src={image}
-                    alt={title}
-                    width={300}
-                    height={400}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </Grid>
-              </>
-            )}
-          </Grid>
-        ))}
-      </Box>*/}
-
-      {/*<Box mb={5}>
-        <Typography
-          variant='h4'
-          fontWeight='bold'
-          textAlign='center'
-          gutterBottom
-        >
-          Наш технологический стек
-        </Typography>
-        <Typography
-          variant='subtitle1'
-          color='text.secondary'
-          textAlign='center'
-          mb={4}
-        >
-          Мы используем современные технологии для разработки и поддержки
-          проектов
-        </Typography>
-
-        <Grid container spacing={4}>
-          {techStackData.map((section, idx) => (
-            <Grid key={idx} size={{ xs: 12, sm: 6, md: 4 }}>
-              <TechCard title={section.title} techs={section.techs} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>*/}
+      </Section>
 
       {/* Team */}
-      <Box mb={5} textAlign='center'>
-        <Typography variant='h4' mb={4}>
+      <Section>
+        <Typography variant='h4' textAlign='center' mb={4}>
           Состав команды
         </Typography>
         <Grid container spacing={4} justifyContent='center'>
           {teamMembers.map((member, idx) => (
-            <Grid key={idx} size={{ xs: 6, md: 4, lg: 2 }} textAlign='center'>
-              <Image
-                src={member.image}
-                alt={member.name}
-                width={200}
-                height={200}
-                style={{ borderRadius: '50%', width: '100%', height: 'auto' }}
-              />
+            <Grid key={idx} xs={6} md={4} lg={2} textAlign='center'>
+              {/* Контейнер для изображения */}
+              <Box
+                sx={{
+                  width: 160, // фикс ширина
+                  height: 160, // фикс высота
+                  borderRadius: '50%',
+                  overflow: 'hidden', // чтобы картинка не вылазила
+                  mx: 'auto', // центрирование
+                }}
+              >
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={160}
+                  height={160}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover', // обрезаем красиво
+                  }}
+                />
+              </Box>
+
               <Typography variant='h6' mt={2}>
                 {member.name}
               </Typography>
@@ -397,59 +331,57 @@ function Home() {
             </Grid>
           ))}
         </Grid>
-      </Box>
+      </Section>
 
       {/* Contact Form */}
-      <Box mb={5}>
-        <Container maxWidth='md'>
-          <Grid container spacing={4}>
-            <Grid size={{ xs: 12, lg: 5 }}>
-              <Typography variant='h5' mb={2}>
-                Форма обратной связи
-              </Typography>
-              <Typography variant='body2' mb={1}>
-                Предлагаемый удобный в сопровождении инструмент
-              </Typography>
-              <Typography variant='body2' mb={2}>
-                По вопросам сотрудничества пишите:
-              </Typography>
-              <Typography variant='body2'>
-                <b>Mail:</b> mail@rangeray.ru
-              </Typography>
-              <Typography variant='body2'>
-                <b>Phone:</b> +7 (914) 484-9962
-              </Typography>
-            </Grid>
-
-            <Grid size={{ xs: 12, lg: 7 }}>
-              <Box
-                component='form'
-                sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
-              >
-                <Grid container spacing={2}>
-                  <Grid size={{ xs: 12, md: 6 }}>
-                    <TextField fullWidth label='Имя' variant='outlined' />
-                  </Grid>
-                  <Grid size={{ xs: 12, md: 6 }}>
-                    <TextField fullWidth label='Фамилия' variant='outlined' />
-                  </Grid>
-                </Grid>
-                <TextField fullWidth label='Email' variant='outlined' />
-                <TextField
-                  fullWidth
-                  label='Ваш вопрос...'
-                  multiline
-                  rows={4}
-                  variant='outlined'
-                />
-                <Button variant='contained' color='primary' fullWidth>
-                  Отправить
-                </Button>
-              </Box>
-            </Grid>
+      <Section narrow>
+        <Grid container spacing={4}>
+          <Grid size={{ xs: 12, lg: 5 }}>
+            <Typography variant='h5' mb={2}>
+              Форма обратной связи
+            </Typography>
+            <Typography variant='body2' mb={1}>
+              Предлагаемый удобный в сопровождении инструмент
+            </Typography>
+            <Typography variant='body2' mb={2}>
+              По вопросам сотрудничества пишите:
+            </Typography>
+            <Typography variant='body2'>
+              <b>Mail:</b> mail@rangeray.ru
+            </Typography>
+            <Typography variant='body2'>
+              <b>Phone:</b> +7 (914) 484-9962
+            </Typography>
           </Grid>
-        </Container>
-      </Box>
+
+          <Grid size={{ xs: 12, lg: 7 }}>
+            <Box
+              component='form'
+              sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+            >
+              <Grid container spacing={2}>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <TextField fullWidth label='Имя' variant='outlined' />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                  <TextField fullWidth label='Фамилия' variant='outlined' />
+                </Grid>
+              </Grid>
+              <TextField fullWidth label='Email' variant='outlined' />
+              <TextField
+                fullWidth
+                label='Ваш вопрос...'
+                multiline
+                rows={4}
+                variant='outlined'
+              />
+              <Button variant='contained' color='primary' fullWidth>
+                Отправить
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Section>
     </Box>
   );
 }
