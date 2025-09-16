@@ -221,16 +221,86 @@ function Home() {
       }}
     >
       {/* Hero Section */}
-      <Section>
-        <Grid container justifyContent='center' spacing={4} mb={5}>
-          <Grid size={{ xs: 12, lg: 12 }} textAlign='center'>
-            <Typography variant='h2' gutterBottom>
-              Разработка и поддержка сайтов
+      <Section sx={{ position: 'relative', overflow: 'hidden', mb: 5 }}>
+        {/* Фоновое изображение */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100%',
+            backgroundSize: 'cover',
+            backgroundImage: `url('/space.png')`,
+            backgroundPosition: 'center',
+            zIndex: -1,
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              bgcolor: 'rgba(0,0,0,0.5)', // полупрозрачный оверлей для контраста текста
+            },
+          }}
+        />
+
+        <Grid container justifyContent='center' textAlign='center' spacing={2}>
+          <Grid
+            item
+            xs={12}
+            sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 16 } }}
+          >
+            {/* Логотип */}
+            <Image
+              src='/logo.svg'
+              alt='logo'
+              width={100}
+              height={100}
+              style={{ display: 'inline-block', marginBottom: 16 }}
+            />
+
+            {/* Основной текст */}
+            <Typography
+              variant='h2'
+              sx={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontWeight: 700,
+                color: '#fff',
+                fontSize: { xs: '2rem', md: '4rem' },
+              }}
+              gutterBottom
+            >
+              RANGE RAY
             </Typography>
-            <Typography variant='h5' color='text.secondary'>
-              &#34;Range-Ray&#34; - интернет-агентство, создаем проекты любой
-              сложности — от визитки до интернет-магазина и платформ
-              недвижимости.
+
+            <Typography
+              variant='h5'
+              sx={{
+                fontFamily: "'JetBrains Mono', monospace",
+                color: '#A5D6FF',
+                mb: 4,
+                fontSize: { xs: '1rem', md: '1.5rem' },
+              }}
+            >
+              WEB-DEVELOPMENT
+            </Typography>
+
+            {/* Заголовок */}
+            <Typography
+              variant='h6'
+              sx={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontWeight: 400,
+                color: '#fff',
+                maxWidth: 800,
+                mx: 'auto',
+                fontSize: { xs: '0.9rem', md: '1.2rem' },
+              }}
+            >
+              Мы создаем высоконагруженные и безопасные веб-приложения, учитывая
+              современные стандарты производительности и безопасности.
             </Typography>
           </Grid>
         </Grid>
@@ -296,17 +366,25 @@ function Home() {
         <Typography variant='h4' textAlign='center' mb={4}>
           Состав команды
         </Typography>
-        <Grid container spacing={4} justifyContent='center'>
+        <Grid container spacing={4} justifyContent='space-between' width='100%'>
           {teamMembers.map((member, idx) => (
-            <Grid key={idx} xs={6} md={4} lg={2} textAlign='center'>
+            <Grid
+              item // обязательно item
+              key={idx}
+              xs={6}
+              sm={4}
+              md={3}
+              lg={2}
+              textAlign='center'
+            >
               {/* Контейнер для изображения */}
               <Box
                 sx={{
-                  width: 160, // фикс ширина
-                  height: 160, // фикс высота
+                  width: 160,
+                  height: 160,
                   borderRadius: '50%',
-                  overflow: 'hidden', // чтобы картинка не вылазила
-                  mx: 'auto', // центрирование
+                  overflow: 'hidden',
+                  mx: 'auto',
                 }}
               >
                 <Image
@@ -317,7 +395,7 @@ function Home() {
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover', // обрезаем красиво
+                    objectFit: 'cover',
                   }}
                 />
               </Box>
@@ -334,7 +412,7 @@ function Home() {
       </Section>
 
       {/* Contact Form */}
-      <Section narrow>
+      <Section>
         <Grid container spacing={4}>
           <Grid size={{ xs: 12, lg: 5 }}>
             <Typography variant='h5' mb={2}>
