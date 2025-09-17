@@ -321,10 +321,15 @@ function Home() {
         <Typography variant='h4' textAlign='center' mb={4}>
           Состав команды
         </Typography>
-        <Grid container spacing={4} justifyContent='space-between' width='100%'>
+        <Grid
+          container
+          spacing={4}
+          justifyContent={{ xs: 'center', md: 'space-between' }}
+          width='100%'
+        >
           {teamMembers.map((member, idx) => (
             <Grid
-              item // обязательно item
+              item={true}
               key={idx}
               xs={6}
               sm={4}

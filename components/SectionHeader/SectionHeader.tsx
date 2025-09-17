@@ -21,6 +21,8 @@ export const SectionHeader = ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        flexWrap: 'wrap', // ✅ разрешаем перенос строк
+        gap: 2, // ✅ чтобы не прилипали
         mb: 4,
       }}
     >
@@ -56,10 +58,11 @@ export const SectionHeader = ({
             color: '#D33C44',
             fontFamily: "'JetBrains Mono', monospace",
             fontWeight: 600,
+            marginLeft: 'auto', // ✅ при переносе ссылка уходит вправо
           }}
         >
           {linkText}
-          <ArrowForwardIcon sx={{ ml: 1 }} />
+          <ArrowForwardIcon style={{ marginLeft: 4 }} />
         </Link>
       )}
     </Box>
