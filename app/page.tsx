@@ -13,23 +13,27 @@ import HeroSection from '@/components/HeroSection/HeroSection';
 const teamMembers = [
   {
     name: 'Артём',
-    role: 'Senior Node.js Developer',
     image: '/telegram-cloud-photo-size-2-3978908276710549647-c.jpg',
+    roles: [
+      'Тех лид, архитектор ПО',
+      'Fullstack инженер',
+      'Node.js, JavaScript, Golang',
+    ],
   },
   {
     name: 'Алексей',
-    role: 'Senior PHP Developer',
     image: '/alexey.jpg',
+    roles: ['Тех лид, архитектор ПО', 'Backend инженер', 'PHP, Golang'],
   },
   {
     name: 'Егор',
-    role: 'QA Tester',
     image: '/telegram-peer-photo-size-2-5433942415187767234-1-0-0.jpg',
+    roles: ['QA Инженер'],
   },
   {
-    name: 'Григорий',
-    role: 'Senior PHP Developer',
+    name: 'Иван',
     image: '/Anonymous_emblem.svg.png',
+    roles: ['Аналитик', 'QA Инженер'],
   },
 ];
 
@@ -49,14 +53,14 @@ function Home() {
         }}
       >
         <Section>
-          <SectionHeader title='#стек технологий' />
+          <SectionHeader title='стек технологий' />
           <TechStackSection></TechStackSection>
         </Section>
 
         {/* Portfolio */}
         <Section>
           <SectionHeader
-            title='#выполненные проекты'
+            title='выполненные проекты'
             linkText='посмотреть все'
             linkHref='/projects'
           />
@@ -65,27 +69,31 @@ function Home() {
 
         {/* Team */}
         <Section>
-          <Typography variant='h4' textAlign='center' mb={4}>
+          <Typography variant='h4' textAlign='center' mb={6}>
             Состав команды
           </Typography>
-          <Grid
-            container
-            spacing={4}
-            justifyContent={{ xs: 'center', md: 'space-between' }}
-            width='100%'
-          >
+
+          <Grid container spacing={4} justifyContent='center'>
             {teamMembers.map((member, idx) => (
               <Grid
                 key={idx}
                 sx={{
-                  xs: 6,
-                  sm: 4,
-                  md: 3,
-                  lg: 2,
+                  flex: {
+                    xs: '1 1 100%', // на мобильных — 100%
+                    sm: '1 1 45%', // на планшетах — 2 в ряд
+                    md: '1 1 30%', // на десктопе — 3 в ряд
+                    lg: '1 1 22%', // на широком экране — 4 в ряд
+                  },
+                  maxWidth: {
+                    xs: '100%',
+                    sm: '45%',
+                    md: '30%',
+                    lg: '22%',
+                  },
+                  textAlign: 'center',
                 }}
-                textAlign='center'
               >
-                {/* Контейнер для изображения */}
+                {/* Фото */}
                 <Box
                   sx={{
                     width: 160,
@@ -93,6 +101,7 @@ function Home() {
                     borderRadius: '50%',
                     overflow: 'hidden',
                     mx: 'auto',
+                    boxShadow: 3,
                   }}
                 >
                   <Image
@@ -108,12 +117,22 @@ function Home() {
                   />
                 </Box>
 
-                <Typography variant='h6' mt={2}>
+                {/* Имя */}
+                <Typography variant='h6' mt={2} fontWeight='bold'>
                   {member.name}
                 </Typography>
-                <Typography variant='body2' color='text.secondary'>
-                  {member.role}
-                </Typography>
+
+                {/* Роли */}
+                {member.roles.map((role, i) => (
+                  <Typography
+                    key={i}
+                    variant='body2'
+                    color='text.secondary'
+                    sx={{ lineHeight: 1.6 }}
+                  >
+                    {role}
+                  </Typography>
+                ))}
               </Grid>
             ))}
           </Grid>
