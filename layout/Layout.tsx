@@ -2,16 +2,22 @@ import React, { FunctionComponent, JSX } from 'react';
 import { Footer } from '@/layout/Footer/Footer';
 import { Header } from '@/layout/Header/Header';
 import { LayoutProps } from '@/layout/Layout.props';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from '@/app/theme';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
-    <div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh', // вся высота экрана
+      }}
+    >
       <Header></Header>
       <main>{children}</main>
       <Footer></Footer>
-    </div>
+    </Box>
   );
 };
 
@@ -20,14 +26,12 @@ export const withLayout = <T extends object>(
 ) => {
   return function WithLayoutComponent(props: T) {
     return (
-
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Layout>
-        <Component {...props} />
-      </Layout>
-
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      </ThemeProvider>
     );
   };
 };

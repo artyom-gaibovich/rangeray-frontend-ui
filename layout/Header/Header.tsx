@@ -2,14 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import {
   AppBar,
   Toolbar,
   Typography,
   Box,
-  Grid,
-  Button,
   IconButton,
   Drawer,
   List,
@@ -19,15 +17,19 @@ import {
   Container,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 const navLinks = [
-  { label: 'О нас', href: '/about' },
-  { label: 'Контакты', href: '/contacts' },
-  { label: 'Проекты', href: '/projects' },
+  { label: 'главная', href: '/' },
+  { label: 'работы', href: '/projects' },
+  { label: 'о нас', href: '/about' },
+  { label: 'контакты', href: '/contacts' },
 ];
 
 export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname(); // текущий путь для подсветки
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -35,90 +37,136 @@ export const Header = () => {
 
   return (
     <>
-      <AppBar
-        position='fixed'
-        color='default'
-        elevation={3}
-        sx={{
-          bgcolor: 'background.default',
-          zIndex: (theme) => theme.zIndex.appBar,
-          borderBottom: '1px solid rgba(175, 213, 251, 0.3)',
-        }}
-      >
+      <AppBar position='fixed' elevation={2} sx={{ bgcolor: '#333333' }}>
         <Container maxWidth='lg'>
-          <Toolbar disableGutters>
-            <Grid container alignItems='center'>
-              {/* Лого */}
-              <Grid size={{ xs: 6, md: 3 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Link
-                    href='/'
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      textDecoration: 'none',
-                      color: 'inherit',
-                    }}
-                  >
-                    <Image src='/logo.svg' alt='logo' width={40} height={40} />
-                    <Typography
-                      variant='h6'
-                      sx={{ ml: 1, fontFamily: "'Formular', monospace" }}
+          <Toolbar
+            disableGutters
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            {/* ====== DESKTOP меню ====== */}
+            <Box
+              component='ul'
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                gap: 4,
+                p: 0,
+                m: 0,
+              }}
+            >
+              {navLinks.map((link) => (
+                <Box component='li' key={link.href} sx={{ listStyle: 'none' }}>
+                  <Link href={link.href} style={{ textDecoration: 'none' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontWeight: 600,
+                        color: pathname === link.href ? '#D33C44' : '#A5D6FF',
+                        transition: 'color 0.2s',
+                        '&:hover': {
+                          color: '#D33C44',
+                        },
+                      }}
                     >
-                      RangeRay
-                    </Typography>
+                      <Box sx={{ color: '#D33C44', mr: 0.5 }}>#</Box>
+                      {link.label}
+                    </Box>
                   </Link>
                 </Box>
-              </Grid>
+              ))}
+            </Box>
 
-              {/* Навигация (desktop) */}
-              <Grid
-                size={{ xs: 0, md: 9 }}
-                sx={{
-                  display: { xs: 'none', md: 'flex' },
-                  justifyContent: 'flex-end',
-                  gap: 3,
-                }}
-              >
-                {navLinks.map((link) => (
-                  <Button
-                    key={link.href}
-                    component={Link}
-                    href={link.href}
-                    color='inherit'
+            {/* ====== DESKTOP контакты ====== */}
+            <Box
+              component='ul'
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                alignItems: 'center',
+                gap: 4,
+                p: 0,
+                m: 0,
+              }}
+            >
+              <Box component='li' sx={{ listStyle: 'none' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <TelegramIcon sx={{ color: '#E96C72' }} />
+                  <Typography
                     sx={{
-                      fontFamily: "'Roboto Mono', monospace",
+                      fontFamily: "'JetBrains Mono', monospace",
                       fontWeight: 600,
-                      '&:hover': { color: 'primary.main' },
+                      color: '#D33C44',
                     }}
                   >
-                    {link.label}
-                  </Button>
-                ))}
-              </Grid>
+                    @rangeray
+                  </Typography>
+                </Box>
+              </Box>
+              <Box component='li' sx={{ listStyle: 'none' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <PhoneIcon sx={{ color: '#E96C72' }} />
+                  <Typography
+                    sx={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontWeight: 600,
+                      color: '#FFFFFF',
+                    }}
+                  >
+                    +7 (914) 447-2000
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
 
-              {/* Бургер-меню (mobile) */}
-              <Grid
-                size={{ xs: 6, md: 0 }}
-                sx={{
-                  display: { xs: 'flex', md: 'none' },
-                  justifyContent: 'flex-end',
+            {/* ====== MOBILE: логотип + бургер ====== */}
+            <Box
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              {/* Логотип */}
+              <Link
+                href='/'
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  textDecoration: 'none',
                 }}
               >
-                <IconButton
-                  edge='end'
-                  color='inherit'
-                  onClick={handleDrawerToggle}
+                <img src='/logo.svg' alt='logo' width={32} height={32} />
+                <Typography
+                  sx={{
+                    ml: 1,
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontWeight: 700,
+                    color: '#A5D6FF',
+                  }}
                 >
-                  <MenuIcon />
-                </IconButton>
-              </Grid>
-            </Grid>
+                  RangeRay
+                </Typography>
+              </Link>
+
+              {/* Бургер */}
+              <IconButton
+                edge='end'
+                color='inherit'
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
 
-      {/* Компенсатор высоты AppBar */}
+      {/* Отступ под фиксированный AppBar */}
       <Toolbar />
 
       {/* Drawer для мобильного меню */}
@@ -127,7 +175,11 @@ export const Header = () => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         sx={{
-          '& .MuiDrawer-paper': { width: 240, bgcolor: 'background.paper' },
+          '& .MuiDrawer-paper': {
+            width: 240,
+            bgcolor: '#333333',
+            color: '#fff',
+          },
         }}
       >
         <List>
@@ -141,8 +193,9 @@ export const Header = () => {
                 <ListItemText
                   primary={link.label}
                   primaryTypographyProps={{
-                    fontFamily: "'Roboto Mono', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                     fontWeight: 600,
+                    color: pathname === link.href ? '#D33C44' : '#A5D6FF',
                   }}
                 />
               </ListItemButton>
