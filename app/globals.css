@@ -31,3 +31,8 @@ a {
 .nav-link-text:hover {
     color: #FFFFFF; /* при наведении */
 }
+
+
+.nav-link:hover .nav-link-text {
+    color: #d33c44;
+}

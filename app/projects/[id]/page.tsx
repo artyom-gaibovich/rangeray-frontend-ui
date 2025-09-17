@@ -4,6 +4,7 @@ import { withLayout } from '@/layout/Layout';
 import { useParams } from 'next/navigation';
 import { Grid, Typography, Box } from '@mui/material';
 import Image from 'next/image';
+import { Section } from '@/components/Section/Section';
 
 const portfolioItems = [
   {
@@ -53,7 +54,7 @@ function ProjectDetail() {
   }
 
   return (
-    <Box className='min-vh-100' sx={{ py: 5, px: { xs: 2, md: 5 } }}>
+    <Section>
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, md: 6 }}>
           <Image
@@ -76,7 +77,7 @@ function ProjectDetail() {
           </Typography>
         </Grid>
       </Grid>
-    </Box>
+    </Section>
   );
 }
 

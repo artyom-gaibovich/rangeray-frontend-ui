@@ -11,6 +11,8 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Section } from '@/components/Section/Section';
+import { ProjectSection } from '@/components/ProjectSection/ProjectSection';
 
 const portfolioItems = [
   {
@@ -53,62 +55,9 @@ const portfolioItems = [
 
 function Projects() {
   return (
-    <section className='page-wrapper d-flex flex-column min-vh-100 py-5'>
-      <Container>
-        <Grid
-          container
-          justifyContent='center'
-          textAlign='center'
-          spacing={2}
-          mb={4}
-        >
-          <Grid size={{ xs: 12, md: 7 }}>
-            <Typography variant='h4' fontWeight='bold'>
-              Портфолио
-            </Typography>
-            <Typography variant='subtitle1' color='text.secondary'>
-              Результат нашей работы
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={4}>
-          {portfolioItems.map((item) => (
-            <Grid key={item.id} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-              <Link
-                href={`/projects/${item.id}`}
-                style={{ textDecoration: 'none', color: 'inherit' }}
-              >
-                <Card sx={{ height: '100%' }}>
-                  <CardMedia>
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={500}
-                      height={500}
-                      style={{
-                        objectFit: 'cover',
-                        width: '100%',
-                        height: '250px',
-                      }}
-                    />
-                  </CardMedia>
-                  <CardContent>
-                    <Typography variant='h6'>{item.title}</Typography>
-                    <Typography variant='body2' color='text.secondary'>
-                      {item.description}
-                    </Typography>
-                    <Typography variant='caption' color='text.secondary'>
-                      Время последнего обновления {item.updated}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Link>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </section>
+    <Section>
+      <ProjectSection></ProjectSection>
+    </Section>
   );
 }
 

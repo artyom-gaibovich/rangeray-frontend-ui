@@ -14,6 +14,12 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import { TechCard } from '@/components/TechCard/TechCard';
+import ContactForm from '@/components/ContactForm/ContactForm';
+import { Section } from '@/components/Section/Section';
+import { SectionHeader } from '@/components/SectionHeader/SectionHeader';
+import { ProjectCard } from '@/components/ProjectCard/ProjectCard';
+import { ProjectSection } from '@/components/ProjectSection/ProjectSection';
+import { TechStackSection } from '@/components/TechStackSection';
 
 const features = [
   {
@@ -48,7 +54,7 @@ const features = [
   },
 ];
 
-const portfolioItems = [
+export const portfolioItems = [
   {
     title: 'Telegram Bot / АС для автоматического ведения канала',
     description:
@@ -56,6 +62,7 @@ const portfolioItems = [
     techStack: ['Node.js', 'TypeScript', 'React', 'Telegram API', 'Kubernetes'],
     image: '/image-5_orig.webp',
     updated: '2024-04-10',
+    demoLink: 'https://t.me/rangeray_demo', // 🔗 демо
   },
   {
     title: 'Bybit Trading Bot',
@@ -64,6 +71,7 @@ const portfolioItems = [
     techStack: ['Python', 'Asyncio', 'REST API', 'Docker'],
     image: '/RU_2405-T26987_PM_CopyPro_1600x900.png',
     updated: '2024-03-05',
+    demoLink: 'https://github.com/rangeray/bybit-bot',
   },
   {
     title: 'Сайт мебель на заказ для Ленинградской области',
@@ -72,6 +80,7 @@ const portfolioItems = [
     techStack: ['React', 'Next.js', 'CSS Modules', 'Node.js'],
     image: '/ytf1cpnvpe8vkn6sm7cl0y3x6haxctnh.jpg',
     updated: '2023-12-20',
+    demoLink: 'https://mebel-leningrad.ru',
   },
   {
     title: 'Bitrix Migrator',
@@ -80,6 +89,7 @@ const portfolioItems = [
     techStack: ['PHP', 'Bitrix Framework', 'MySQL', 'Composer'],
     image: '/8ec9bcc4-27d9-4031-a680-69f2b20f38ad.webp',
     updated: '2024-01-15',
+    demoLink: 'https://bitrix.rangeray.ru',
   },
   {
     title: 'Vega Content System',
@@ -88,6 +98,7 @@ const portfolioItems = [
     techStack: ['Laravel', 'Vue.js', 'MySQL', 'Redis'],
     image: '/nature-pixel-art-ai-generated-3840-x-2160-v0-hdoiobp7mzfc1.webp',
     updated: '2024-02-28',
+    demoLink: 'https://vega.rangeray.ru',
   },
 ];
 
@@ -194,20 +205,6 @@ const techStackData = [
   },
 ];
 
-function Section({
-  children,
-  narrow = false, // если нужно более узкий контейнер (например, форма)
-}: {
-  children: React.ReactNode;
-  narrow?: boolean;
-}) {
-  return (
-    <Box component='section' sx={{ py: 8 }}>
-      <Container maxWidth={narrow ? 'md' : 'lg'}>{children}</Container>
-    </Box>
-  );
-}
-
 function Home() {
   return (
     <Box
@@ -234,6 +231,7 @@ function Home() {
             backgroundImage: `url('/space.png')`,
             backgroundPosition: 'center',
             zIndex: -1,
+            py: { xs: 12, md: 16 },
             '&::after': {
               content: '""',
               position: 'absolute',
@@ -306,59 +304,16 @@ function Home() {
         </Grid>
       </Section>
 
+      <TechStackSection></TechStackSection>
+
       {/* Portfolio */}
       <Section>
-        <Typography
-          variant='h4'
-          fontWeight='bold'
-          textAlign='center'
-          gutterBottom
-        >
-          Портфолио
-        </Typography>
-        <Typography
-          variant='subtitle1'
-          color='text.secondary'
-          textAlign='center'
-          mb={4}
-        >
-          Результат нашей работы
-        </Typography>
-        <Grid container spacing={4} justifyContent='center'>
-          {portfolioItems.map((item, i) => (
-            <Grid key={i} size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-              <Card sx={{ height: '100%' }}>
-                <CardMedia>
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={500}
-                    height={500}
-                    style={{ objectFit: 'cover', width: '100%', height: 250 }}
-                  />
-                </CardMedia>
-                <CardContent>
-                  <Typography variant='h6'>{item.title}</Typography>
-                  <Typography variant='body2' color='text.secondary'>
-                    {item.description}
-                  </Typography>
-                  <Typography variant='caption' color='text.secondary'>
-                    Технологии: {item.techStack.join(', ')}
-                  </Typography>
-                  {item.updated && (
-                    <Typography
-                      variant='caption'
-                      color='text.secondary'
-                      display='block'
-                    >
-                      Последнее обновление: {item.updated}
-                    </Typography>
-                  )}
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <SectionHeader
+          title='#выполненные проекты'
+          linkText='посмотреть все'
+          linkHref='/projects'
+        />
+        <ProjectSection></ProjectSection>
       </Section>
 
       {/* Team */}
@@ -413,52 +368,7 @@ function Home() {
 
       {/* Contact Form */}
       <Section>
-        <Grid container spacing={4}>
-          <Grid size={{ xs: 12, lg: 5 }}>
-            <Typography variant='h5' mb={2}>
-              Форма обратной связи
-            </Typography>
-            <Typography variant='body2' mb={1}>
-              Предлагаемый удобный в сопровождении инструмент
-            </Typography>
-            <Typography variant='body2' mb={2}>
-              По вопросам сотрудничества пишите:
-            </Typography>
-            <Typography variant='body2'>
-              <b>Mail:</b> mail@rangeray.ru
-            </Typography>
-            <Typography variant='body2'>
-              <b>Phone:</b> +7 (914) 484-9962
-            </Typography>
-          </Grid>
-
-          <Grid size={{ xs: 12, lg: 7 }}>
-            <Box
-              component='form'
-              sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
-            >
-              <Grid container spacing={2}>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <TextField fullWidth label='Имя' variant='outlined' />
-                </Grid>
-                <Grid size={{ xs: 12, md: 6 }}>
-                  <TextField fullWidth label='Фамилия' variant='outlined' />
-                </Grid>
-              </Grid>
-              <TextField fullWidth label='Email' variant='outlined' />
-              <TextField
-                fullWidth
-                label='Ваш вопрос...'
-                multiline
-                rows={4}
-                variant='outlined'
-              />
-              <Button variant='contained' color='primary' fullWidth>
-                Отправить
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
+        <ContactForm></ContactForm>
       </Section>
     </Box>
   );

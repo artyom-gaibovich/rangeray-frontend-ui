@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import {
   AppBar,
   Toolbar,
@@ -29,6 +29,7 @@ const navLinks = [
 
 export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname(); // текущий путь для подсветки
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -36,13 +37,7 @@ export const Header = () => {
 
   return (
     <>
-      <AppBar
-        position='fixed'
-        elevation={2}
-        sx={{
-          bgcolor: '#333333',
-        }}
-      >
+      <AppBar position='fixed' elevation={2} sx={{ bgcolor: '#333333' }}>
         <Container maxWidth='lg'>
           <Toolbar
             disableGutters
@@ -56,7 +51,7 @@ export const Header = () => {
             <Box
               component='ul'
               sx={{
-                display: { xs: 'none', md: 'flex' }, // скрываем на мобилке
+                display: { xs: 'none', md: 'flex' },
                 gap: 4,
                 p: 0,
                 m: 0,
@@ -64,21 +59,23 @@ export const Header = () => {
             >
               {navLinks.map((link) => (
                 <Box component='li' key={link.href} sx={{ listStyle: 'none' }}>
-                  <Link
-                    href={link.href}
-                    style={{
-                      textDecoration: 'none',
-                      fontFamily: "'Roboto Mono', monospace",
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      color: '#A5D6FF',
-                    }}
-                  >
-                    <span style={{ color: '#D33C44', marginRight: '4px' }}>
-                      #
-                    </span>
-                    {link.label}
+                  <Link href={link.href} style={{ textDecoration: 'none' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontWeight: 600,
+                        color: pathname === link.href ? '#D33C44' : '#A5D6FF',
+                        transition: 'color 0.2s',
+                        '&:hover': {
+                          color: '#D33C44',
+                        },
+                      }}
+                    >
+                      <Box sx={{ color: '#D33C44', mr: 0.5 }}>#</Box>
+                      {link.label}
+                    </Box>
                   </Link>
                 </Box>
               ))}
@@ -88,7 +85,7 @@ export const Header = () => {
             <Box
               component='ul'
               sx={{
-                display: { xs: 'none', md: 'flex' }, // скрываем на мобилке
+                display: { xs: 'none', md: 'flex' },
                 alignItems: 'center',
                 gap: 4,
                 p: 0,
@@ -100,7 +97,7 @@ export const Header = () => {
                   <TelegramIcon sx={{ color: '#E96C72' }} />
                   <Typography
                     sx={{
-                      fontFamily: "'Roboto Mono', monospace",
+                      fontFamily: "'JetBrains Mono', monospace",
                       fontWeight: 600,
                       color: '#D33C44',
                     }}
@@ -114,7 +111,7 @@ export const Header = () => {
                   <PhoneIcon sx={{ color: '#E96C72' }} />
                   <Typography
                     sx={{
-                      fontFamily: "'Roboto Mono', monospace",
+                      fontFamily: "'JetBrains Mono', monospace",
                       fontWeight: 600,
                       color: '#FFFFFF',
                     }}
@@ -128,7 +125,7 @@ export const Header = () => {
             {/* ====== MOBILE: логотип + бургер ====== */}
             <Box
               sx={{
-                display: { xs: 'flex', md: 'none' }, // показываем только на мобилке
+                display: { xs: 'flex', md: 'none' },
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 width: '100%',
@@ -143,11 +140,11 @@ export const Header = () => {
                   textDecoration: 'none',
                 }}
               >
-                <Image src='/logo.svg' alt='logo' width={32} height={32} />
+                <img src='/logo.svg' alt='logo' width={32} height={32} />
                 <Typography
                   sx={{
                     ml: 1,
-                    fontFamily: "'Formular', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                     fontWeight: 700,
                     color: '#A5D6FF',
                   }}
@@ -196,8 +193,9 @@ export const Header = () => {
                 <ListItemText
                   primary={link.label}
                   primaryTypographyProps={{
-                    fontFamily: "'Roboto Mono', monospace",
+                    fontFamily: "'JetBrains Mono', monospace",
                     fontWeight: 600,
+                    color: pathname === link.href ? '#D33C44' : '#A5D6FF',
                   }}
                 />
               </ListItemButton>
