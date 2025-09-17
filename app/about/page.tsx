@@ -10,13 +10,23 @@ import {
   ListItemIcon,
   ListItemText,
   Box,
+  Button,
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { withLayout } from '@/layout/Layout';
+import Link from 'next/link';
 
 function About() {
   return (
     <Section>
+      <Button
+        variant='contained'
+        component={Link}
+        href='/' // ссылка на главную
+        sx={{ mb: 4 }}
+      >
+        Вернуться на главную
+      </Button>
       <Container maxWidth='md'>
         <Grid container justifyContent='center'>
           <Grid xs={12}>

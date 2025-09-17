@@ -116,7 +116,7 @@ export const Header = () => {
                       color: '#FFFFFF',
                     }}
                   >
-                    +7 (914) 484-9962
+                    +7 (914) 447-2000
                   </Typography>
                 </Box>
               </Box>

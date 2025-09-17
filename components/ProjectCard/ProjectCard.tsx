@@ -85,7 +85,15 @@ export const ProjectCard = ({
       <Box sx={{ p: 2, pt: 0, display: 'flex', gap: 2 }}>
         <Button
           variant='outlined'
-          sx={{ borderColor: '#D33C44', color: '#D33C44' }}
+          sx={{
+            borderColor: '#D33C44',
+            color: '#D33C44',
+            '&:hover': {
+              borderColor: '#FF6B70', // ваш цвет при hover
+              backgroundColor: '#FFDCE0', // фон при hover (можно оставить прозрачным)
+              color: '#D33C44', // если хотите, чтобы текст оставался тем же
+            },
+          }}
           href={demoLink}
           target='_blank'
         >
@@ -93,7 +101,15 @@ export const ProjectCard = ({
         </Button>
         <Button
           variant='outlined'
-          sx={{ borderColor: '#A5D6FF', color: '#A5D6FF' }}
+          sx={{
+            borderColor: '#A5D6FF',
+            color: '#A5D6FF',
+            '&:hover': {
+              borderColor: '#70C1FF',
+              backgroundColor: '#E0F2FF',
+              color: '#A5D6FF',
+            },
+          }}
           href={detailsLink}
         >
           Детали <span style={{ marginLeft: 4 }}>{'=>'} </span>

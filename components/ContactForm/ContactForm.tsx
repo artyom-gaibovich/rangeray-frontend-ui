@@ -17,7 +17,7 @@ export default function ContactForm() {
           <b>Mail:</b> mail@rangeray.ru
         </Typography>
         <Typography variant='body2'>
-          <b>Phone:</b> +7 (914) 484-9962
+          <b>Phone:</b> +7 (914) 447-2000
         </Typography>
       </Grid>
 

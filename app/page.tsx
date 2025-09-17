@@ -20,6 +20,7 @@ import { SectionHeader } from '@/components/SectionHeader/SectionHeader';
 import { ProjectCard } from '@/components/ProjectCard/ProjectCard';
 import { ProjectSection } from '@/components/ProjectSection/ProjectSection';
 import { TechStackSection } from '@/components/TechStackSection';
+import HeroSection from '@/components/HeroSection/HeroSection';
 
 const features = [
   {
@@ -207,175 +208,95 @@ const techStackData = [
 
 function Home() {
   return (
-    <Box
-      className='page-wrapper'
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-        py: 5,
-        px: { xs: 2, md: 5 },
-      }}
-    >
-      {/* Hero Section */}
-      <Section sx={{ position: 'relative', overflow: 'hidden', mb: 5 }}>
-        {/* Фоновое изображение */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100%',
-            backgroundSize: 'cover',
-            backgroundImage: `url('/space.png')`,
-            backgroundPosition: 'center',
-            zIndex: -1,
-            py: { xs: 12, md: 16 },
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              bgcolor: 'rgba(0,0,0,0.5)', // полупрозрачный оверлей для контраста текста
-            },
-          }}
-        />
+    <>
+      {/* Hero section */}
+      <HeroSection></HeroSection>
+      <Box
+        className='page-wrapper'
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+          py: 5,
+          px: { xs: 2, md: 5 },
+        }}
+      >
+        <Section>
+          <SectionHeader title='#стек технологий' />
+          <TechStackSection></TechStackSection>
+        </Section>
 
-        <Grid container justifyContent='center' textAlign='center' spacing={2}>
+        {/* Portfolio */}
+        <Section>
+          <SectionHeader
+            title='#выполненные проекты'
+            linkText='посмотреть все'
+            linkHref='/projects'
+          />
+          <ProjectSection></ProjectSection>
+        </Section>
+
+        {/* Team */}
+        <Section>
+          <Typography variant='h4' textAlign='center' mb={4}>
+            Состав команды
+          </Typography>
           <Grid
-            item
-            xs={12}
-            sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 16 } }}
+            container
+            spacing={4}
+            justifyContent={{ xs: 'center', md: 'space-between' }}
+            width='100%'
           >
-            {/* Логотип */}
-            <Image
-              src='/logo.svg'
-              alt='logo'
-              width={100}
-              height={100}
-              style={{ display: 'inline-block', marginBottom: 16 }}
-            />
-
-            {/* Основной текст */}
-            <Typography
-              variant='h2'
-              sx={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontWeight: 700,
-                color: '#fff',
-                fontSize: { xs: '2rem', md: '4rem' },
-              }}
-              gutterBottom
-            >
-              RANGE RAY
-            </Typography>
-
-            <Typography
-              variant='h5'
-              sx={{
-                fontFamily: "'JetBrains Mono', monospace",
-                color: '#A5D6FF',
-                mb: 4,
-                fontSize: { xs: '1rem', md: '1.5rem' },
-              }}
-            >
-              WEB-DEVELOPMENT
-            </Typography>
-
-            {/* Заголовок */}
-            <Typography
-              variant='h6'
-              sx={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontWeight: 400,
-                color: '#fff',
-                maxWidth: 800,
-                mx: 'auto',
-                fontSize: { xs: '0.9rem', md: '1.2rem' },
-              }}
-            >
-              Мы создаем высоконагруженные и безопасные веб-приложения, учитывая
-              современные стандарты производительности и безопасности.
-            </Typography>
-          </Grid>
-        </Grid>
-      </Section>
-
-      <TechStackSection></TechStackSection>
-
-      {/* Portfolio */}
-      <Section>
-        <SectionHeader
-          title='#выполненные проекты'
-          linkText='посмотреть все'
-          linkHref='/projects'
-        />
-        <ProjectSection></ProjectSection>
-      </Section>
-
-      {/* Team */}
-      <Section>
-        <Typography variant='h4' textAlign='center' mb={4}>
-          Состав команды
-        </Typography>
-        <Grid
-          container
-          spacing={4}
-          justifyContent={{ xs: 'center', md: 'space-between' }}
-          width='100%'
-        >
-          {teamMembers.map((member, idx) => (
-            <Grid
-              item={true}
-              key={idx}
-              xs={6}
-              sm={4}
-              md={3}
-              lg={2}
-              textAlign='center'
-            >
-              {/* Контейнер для изображения */}
-              <Box
-                sx={{
-                  width: 160,
-                  height: 160,
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  mx: 'auto',
-                }}
+            {teamMembers.map((member, idx) => (
+              <Grid
+                item={true}
+                key={idx}
+                xs={6}
+                sm={4}
+                md={3}
+                lg={2}
+                textAlign='center'
               >
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  width={160}
-                  height={160}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
+                {/* Контейнер для изображения */}
+                <Box
+                  sx={{
+                    width: 160,
+                    height: 160,
+                    borderRadius: '50%',
+                    overflow: 'hidden',
+                    mx: 'auto',
                   }}
-                />
-              </Box>
+                >
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={160}
+                    height={160}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </Box>
 
-              <Typography variant='h6' mt={2}>
-                {member.name}
-              </Typography>
-              <Typography variant='body2' color='text.secondary'>
-                {member.role}
-              </Typography>
-            </Grid>
-          ))}
-        </Grid>
-      </Section>
+                <Typography variant='h6' mt={2}>
+                  {member.name}
+                </Typography>
+                <Typography variant='body2' color='text.secondary'>
+                  {member.role}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
+        </Section>
 
-      {/* Contact Form */}
-      <Section>
-        <ContactForm></ContactForm>
-      </Section>
-    </Box>
+        {/* Contact Form */}
+        <Section>
+          <ContactForm></ContactForm>
+        </Section>
+      </Box>
+    </>
   );
 }
 export default withLayout(Home);
