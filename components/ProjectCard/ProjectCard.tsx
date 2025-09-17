@@ -6,7 +6,6 @@ import {
   CardMedia,
   Typography,
   Box,
-  Chip,
   Button,
 } from '@mui/material';
 import Image from 'next/image';
@@ -14,7 +13,7 @@ interface ProjectCardProps {
   image: string;
   title: string;
   description: string;
-  techStack: string[];
+  techStack: readonly string[];
   demoLink?: string;
   detailsLink?: string;
 }
@@ -95,7 +94,6 @@ export const ProjectCard = ({
             },
           }}
           href={demoLink}
-          target='_blank'
         >
           Демо <span style={{ marginLeft: 4 }}>{'<~>'}</span>
         </Button>

@@ -1,8 +1,6 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { ProjectCard } from '@/components/ProjectCard/ProjectCard';
-import { portfolioItems } from '@/app/page';
-import { Section } from '@/components/Section/Section';
-import { SectionHeader } from '@/components/SectionHeader/SectionHeader';
+import { portfolioItems } from '@/libs/data';
 
 export function ProjectSection() {
   return (

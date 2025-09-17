@@ -2,9 +2,10 @@
 
 import { withLayout } from '@/layout/Layout';
 import { useParams } from 'next/navigation';
-import { Grid, Typography, Box } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Section } from '@/components/Section/Section';
+import Link from 'next/link';
 
 const portfolioItems = [
   {
@@ -55,6 +56,14 @@ function ProjectDetail() {
 
   return (
     <Section>
+      <Button
+        variant='contained'
+        component={Link}
+        href='/' // ссылка на главную
+        sx={{ mb: 4 }}
+      >
+        Вернуться на главную
+      </Button>
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, md: 6 }}>
           <Image

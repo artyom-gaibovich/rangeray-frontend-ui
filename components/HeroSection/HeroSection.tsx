@@ -34,7 +34,11 @@ export default function HeroSection() {
         sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}
       >
         <Grid container justifyContent='center' spacing={2}>
-          <Grid item xs={12}>
+          <Grid
+            sx={{
+              xs: 12,
+            }}
+          >
             <Image
               src='/logo.svg'
               alt='logo'

@@ -19,6 +19,7 @@ function Contacts() {
     /*await bot.sendMessage(JSON.stringify({ name, surname, email }));*/
   };
 
+  console.log(formAction);
   return (
     <Box className='page-wrapper d-flex flex-column min-vh-100'>
       <Card sx={{ mb: 3 }}>

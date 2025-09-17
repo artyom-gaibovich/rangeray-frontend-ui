@@ -2,15 +2,14 @@
 
 import { Section } from '@/components/Section/Section';
 import {
+  Button,
   Container,
   Grid,
-  Typography,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Box,
-  Button,
+  Typography,
 } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { withLayout } from '@/layout/Layout';
@@ -29,7 +28,7 @@ function About() {
       </Button>
       <Container maxWidth='md'>
         <Grid container justifyContent='center'>
-          <Grid xs={12}>
+          <Grid sx={{ xs: 12 }}>
             <Typography
               variant='h3'
               textAlign='center'
