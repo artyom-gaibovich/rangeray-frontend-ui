@@ -65,11 +65,11 @@ export const Header = () => {
                         display: 'flex',
                         alignItems: 'center',
                         fontFamily: "'JetBrains Mono', monospace",
-                        fontWeight: 600,
-                        color: pathname === link.href ? '#D33C44' : '#A5D6FF',
+                        fontWeight: 100,
+                        color: pathname === link.href ? '#FFFFFF' : '#A5D6FF',
                         transition: 'color 0.2s',
                         '&:hover': {
-                          color: '#D33C44',
+                          color: '#FFFFFF',
                         },
                       }}
                     >
@@ -112,7 +112,7 @@ export const Header = () => {
                   <Typography
                     sx={{
                       fontFamily: "'JetBrains Mono', monospace",
-                      fontWeight: 600,
+                      fontWeight: 400,
                       color: '#FFFFFF',
                     }}
                   >
@@ -145,7 +145,7 @@ export const Header = () => {
                   sx={{
                     ml: 1,
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontWeight: 700,
+                    fontWeight: 100,
                     color: '#A5D6FF',
                   }}
                 >
@@ -194,7 +194,7 @@ export const Header = () => {
                   primary={link.label}
                   primaryTypographyProps={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontWeight: 600,
+                    fontWeight: 100,
                     color: pathname === link.href ? '#D33C44' : '#A5D6FF',
                   }}
                 />

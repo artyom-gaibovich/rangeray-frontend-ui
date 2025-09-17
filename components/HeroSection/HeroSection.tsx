@@ -42,8 +42,8 @@ export default function HeroSection() {
             <Image
               src='/logo.svg'
               alt='logo'
-              width={100}
-              height={100}
+              width={351}
+              height={282}
               style={{ display: 'inline-block', marginBottom: 16 }}
             />
             <Typography
@@ -62,7 +62,7 @@ export default function HeroSection() {
               variant='h5'
               sx={{
                 fontFamily: "'JetBrains Mono', monospace",
-                color: '#A5D6FF',
+                color: '#D33C44',
                 mb: 4,
                 fontSize: { xs: '1rem', md: '1.5rem' },
               }}
@@ -73,7 +73,7 @@ export default function HeroSection() {
               variant='h6'
               sx={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontWeight: 400,
+                fontWeight: 300,
                 color: '#fff',
                 maxWidth: 800,
                 mx: 'auto',

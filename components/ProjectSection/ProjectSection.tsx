@@ -4,7 +4,7 @@ import { portfolioItems } from '@/libs/data';
 
 export function ProjectSection() {
   return (
-    <Grid container spacing={4} justifyContent='center'>
+    <Grid container spacing={4} justifyContent='flex-start'>
       {portfolioItems.map((item, i) => (
         <Grid
           key={i}
