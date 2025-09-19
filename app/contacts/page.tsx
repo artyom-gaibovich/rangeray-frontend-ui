@@ -22,10 +22,10 @@ function Contacts() {
   console.log(formAction);
   return (
     <Box className='page-wrapper d-flex flex-column min-vh-100'>
-      <Card sx={{ mb: 3 }}>
+      <Card sx={{ mb: 3, border: 'none' }}>
         <Image
-          src='/06_large.png'
-          height={200}
+          src='/lngr.jpeg'
+          height={400}
           width={999}
           alt='Карта проезда'
           style={{ width: '100%', objectFit: 'cover' }}
