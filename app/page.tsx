@@ -14,16 +14,12 @@ const teamMembers = [
   {
     name: 'Артём',
     image: '/telegram-cloud-photo-size-2-3978908276710549647-c.jpg',
-    roles: [
-      'Тех лид, архитектор ПО',
-      'Fullstack инженер',
-      'Node.js, JavaScript, Golang',
-    ],
+    roles: ['Fullstack инженер', 'Node.js, TypeScript, React, Golang'],
   },
   {
     name: 'Алексей',
     image: '/alexey.jpg',
-    roles: ['Тех лид, архитектор ПО', 'Backend инженер', 'PHP, Golang'],
+    roles: ['Backend инженер', 'PHP, Golang'],
   },
   {
     name: 'Егор',
@@ -69,9 +65,7 @@ function Home() {
 
         {/* Team */}
         <Section>
-          <Typography variant='h4' textAlign='center' mb={6}>
-            Состав команды
-          </Typography>
+          <SectionHeader title='состав команды' />
 
           <Grid container spacing={4} justifyContent='center'>
             {teamMembers.map((member, idx) => (
