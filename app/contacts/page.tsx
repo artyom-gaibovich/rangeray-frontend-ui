@@ -22,15 +22,19 @@ function Contacts() {
   console.log(formAction);
   return (
     <Box className='page-wrapper d-flex flex-column min-vh-100'>
-      <Card sx={{ mb: 3, border: 'none' }}>
-        <Image
-          src='/lngr.jpeg'
-          height={400}
-          width={999}
-          alt='Карта проезда'
-          style={{ width: '100%', objectFit: 'cover' }}
-        />
-      </Card>
+      <Card sx={{ mb: 3, border: 'none' }}></Card>
+      <Image
+        src='/lngr.jpeg'
+        alt='Карта проезда'
+        width={2048} // исходная ширина
+        height={682} // исходная высота
+        style={{
+          width: '100%', // ширина под контейнер
+          height: 'auto', // пропорции сохраняются
+          maxWidth: '2048px', // чтобы не растягивалась больше оригинала
+        }}
+        unoptimized // отключает конвертацию в WebP, сохраняет jpeg
+      />
 
       <Section>
         <CardContent>

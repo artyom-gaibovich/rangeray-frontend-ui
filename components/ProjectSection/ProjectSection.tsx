@@ -17,8 +17,10 @@ export function ProjectSection() {
           <ProjectCard
             image={item.image}
             title={item.title}
+            demoType={item.demoType}
             description={item.description}
             techStack={item.techStack}
+            demoContent={item.demoContent}
             demoLink={item.demoLink || '#'}
             detailsLink={`/projects/${i + 1}`}
           />
