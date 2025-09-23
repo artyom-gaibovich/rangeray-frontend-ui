@@ -1,4 +1,16 @@
-export const portfolioItems = [
+export type PortfolioItem = {
+  id: number;
+  title: string;
+  description: string;
+  techStack: readonly string[];
+  image: string;
+  updated: string; // можно использовать Date или string в ISO формате
+  demoType: 'link' | 'pdf';
+  demoLink: string;
+  demoContent?: string; // только для pdf
+};
+
+export const portfolioItems: readonly PortfolioItem[] = [
   {
     id: 1,
     title: 'Telegram Bot / АС для автоматического ведения канала',
@@ -7,7 +19,8 @@ export const portfolioItems = [
     techStack: ['Node.js', 'TypeScript', 'React', 'Telegram API', 'Kubernetes'],
     image: '/image-5_orig.webp',
     updated: '2024-04-10',
-    demoLink: 'https://t.me/rangeray_demo', // 🔗 демо
+    demoType: 'link',
+    demoLink: 'https://t.me/rangeray_demo',
   },
   {
     id: 2,
@@ -17,6 +30,7 @@ export const portfolioItems = [
     techStack: ['Python', 'Asyncio', 'REST API', 'Docker'],
     image: '/RU_2405-T26987_PM_CopyPro_1600x900.png',
     updated: '2024-03-05',
+    demoType: 'link',
     demoLink: 'https://github.com/rangeray/bybit-bot',
   },
   {
@@ -27,26 +41,30 @@ export const portfolioItems = [
     techStack: ['React', 'Next.js', 'CSS Modules', 'Node.js'],
     image: '/ytf1cpnvpe8vkn6sm7cl0y3x6haxctnh.jpg',
     updated: '2023-12-20',
+    demoType: 'link',
     demoLink: 'https://mebel-leningrad.ru',
   },
   {
     id: 4,
-    title: 'Bitrix Migrator',
+    title: 'GEALAN',
     description:
-      'Система миграций для проектов на Bitrix, автоматизация переноса данных и структуры.',
+      'Изготавливаем пластиковые окна из профиля GEALAN по немецким технологиям',
     techStack: ['PHP', 'Bitrix Framework', 'MySQL', 'Composer'],
-    image: '/8ec9bcc4-27d9-4031-a680-69f2b20f38ad.webp',
+    image: '/projects-cards/gealan.png',
     updated: '2024-01-15',
-    demoLink: 'https://bitrix.rangeray.ru',
+    demoType: 'pdf',
+    demoContent: '/pdf/catalog.pdf',
+    demoLink: 'public/pdf/catalog.pdf',
   },
   {
     id: 5,
-    title: 'Vega Content System',
-    description:
-      'CMS для управления контентом с расширяемой архитектурой, поддержкой мультиязычности и кастомных модулей.',
-    techStack: ['Laravel', 'Vue.js', 'MySQL', 'Redis'],
-    image: '/nature-pixel-art-ai-generated-3840-x-2160-v0-hdoiobp7mzfc1.webp',
-    updated: '2024-02-28',
-    demoLink: 'https://vega.rangeray.ru',
+    title: 'Лензащита',
+    description: 'Общество с ограниченной ответстве',
+    techStack: ['PHP', 'Bitrix Framework', 'MySQL', 'Composer'],
+    image: '/projects-cards/lenzas-logo.png',
+    updated: '2024-01-15',
+    demoType: 'pdf',
+    demoContent: '/pdf/lenzas.pdf',
+    demoLink: 'public/pdf/lenzas.pdf',
   },
 ] as const;

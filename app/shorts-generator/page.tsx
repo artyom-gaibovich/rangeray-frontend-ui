@@ -4,31 +4,7 @@ import { useState } from 'react';
 import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-
-import {
-  materialOceanic,
-  nightOwl,
-  vscDarkPlus,
-} from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import {
-  holiTheme,
-  hopscotch,
-  lucario,
-  materialDark,
-  materialLight,
-  okaidia,
-  oneDark,
-  oneLight,
-  pojoaque,
-  prism,
-  shadesOfPurple,
-  solarizedDarkAtom,
-  solarizedlight,
-  synthwave84,
-  tomorrow,
-  twilight,
-  xonokai,
-} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { lucario } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 type CodeBlockProps = {
   language: string;
@@ -75,7 +51,7 @@ function CodeBlock({ language, value }: CodeBlockProps) {
 
 export default function ShortsGeneratorPage() {
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState('');
+  const [output, setOutput] = useState<string>('');
 
   return (
     <Container sx={{ py: 5 }}>
@@ -116,9 +92,9 @@ export default function ShortsGeneratorPage() {
           <ReactMarkdown
             children={output}
             components={{
-              code({ inline, className, children, ...props }) {
+              code({ className, children, ...props }): any {
                 const match = /language-(\w+)/.exec(className || '');
-                return !inline && match ? (
+                return match ? (
                   <CodeBlock language={match[1]} value={String(children)} />
                 ) : (
                   <code style={{ color: '#D33C44' }}>{children}</code>

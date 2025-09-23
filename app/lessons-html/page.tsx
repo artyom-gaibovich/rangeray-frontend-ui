@@ -1,147 +1,99 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Paper } from '@mui/material';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { withLayout } from '@/layout/Layout';
-import { Section } from '@/components/Section/Section';
+import {
+  oneDark,
+  vscDarkPlus,
+  materialOceanic,
+  nightOwl,
+} from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-function LessonHTML() {
+const codeExample = `<p>Первый абзац...</p>
+<p>Второй абзац...</p>`;
+
+const themes = {
+  oneDark,
+  vscDarkPlus,
+  materialOceanic,
+  nightOwl,
+};
+
+export default function LessonPage() {
+  const [theme, setTheme] = useState<keyof typeof themes>('oneDark');
+
+  const handleDownload = () => {
+    const htmlContent = `
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML: параграфы и переносы</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #0f1117;
+      color: #fff;
+      padding: 20px;
+    }
+    pre {
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .title { font-size: 24px; margin-bottom: 12px; }
+    .section { margin: 20px 0; }
+    button {
+      padding: 8px 12px;
+      background: #D33C44;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">HTML: параграфы и переносы</h1>
+  <div class="section">
+    <h2>Пример</h2>
+    <pre><code>${codeExample}</code></pre>
+  </div>
+</body>
+</html>
+    `;
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'lesson.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
-    <Box sx={{ bgcolor: '#18202A', color: '#fff', minHeight: '100vh' }}>
-      <Container sx={{ py: 8 }}>
-        {/* Заголовок */}
-        <Typography
-          variant='h3'
-          textAlign='center'
-          gutterBottom
-          sx={{
-            fontFamily: "'JetBrains Mono', monospace",
-            color: '#D33C44',
-            mb: 6,
-          }}
+    <div className='space-y-4 p-6'>
+      <h1 className='text-2xl font-bold'>HTML: параграфы и переносы</h1>
+
+      <div>
+        <label className='mr-2'>Выбери тему:</label>
+        <select
+          className='rounded bg-gray-800 p-2 text-white'
+          value={theme}
+          onChange={(e) => setTheme(e.target.value as keyof typeof themes)}
         >
-          HTML: параграфы и переносы
-        </Typography>
+          {Object.keys(themes).map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
+      </div>
 
-        {/* Вступление */}
-        <Section>
-          <Typography
-            component={motion.p}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            sx={{
-              fontSize: { xs: '1rem', md: '1.2rem' },
-              textAlign: 'center',
-              maxWidth: '700px',
-              mx: 'auto',
-              mb: 4,
-            }}
-          >
-            Почему текст в HTML выглядит как одно длинное полотно? 🤔 Решение
-            простое — параграфы и переносы!
-          </Typography>
-        </Section>
+      <SyntaxHighlighter language='html' style={themes[theme]}>
+        {codeExample}
+      </SyntaxHighlighter>
 
-        {/* Пример параграфов */}
-        <Section>
-          <Typography
-            variant='h5'
-            sx={{
-              color: '#D33C44',
-              mb: 2,
-              fontFamily: "'JetBrains Mono', monospace",
-            }}
-          >
-            Тег &lt;p&gt; — создаём абзац
-          </Typography>
-
-          <Grid container spacing={4} alignItems='center'>
-            <Grid item xs={12} md={6}>
-              <Typography>
-                Каждый абзац автоматически получает перенос строки и отступы.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Paper sx={{ p: 2, bgcolor: '#0f172a' }}>
-                <SyntaxHighlighter language='html' style={oneDark}>
-                  {`<p>Первый абзац...</p>
-<p>Второй абзац...</p>`}
-                </SyntaxHighlighter>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Section>
-
-        {/* Пример br */}
-        <Section>
-          <Typography
-            variant='h5'
-            sx={{
-              color: '#D33C44',
-              mb: 2,
-              fontFamily: "'JetBrains Mono', monospace",
-            }}
-          >
-            Тег &lt;br&gt; — перенос строки
-          </Typography>
-
-          <Grid container spacing={4} alignItems='center'>
-            <Grid item xs={12} md={6}>
-              <Typography>
-                Один тег = перенос строки. Два тега подряд = пустая строка.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Paper sx={{ p: 2, bgcolor: '#0f172a' }}>
-                <SyntaxHighlighter language='html' style={oneDark}>
-                  {`Привет<br>Мир`}
-                </SyntaxHighlighter>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Section>
-
-        {/* Итог */}
-        <Section>
-          <Typography
-            variant='h6'
-            sx={{
-              textAlign: 'center',
-              fontFamily: "'JetBrains Mono', monospace",
-              color: '#fff',
-              mt: 6,
-            }}
-          >
-            🔑 Помни:
-            <br /> <span style={{ color: '#D33C44' }}>&lt;p&gt;</span> = абзац
-            <br /> <span style={{ color: '#D33C44' }}>&lt;br&gt;</span> =
-            перенос строки
-          </Typography>
-        </Section>
-
-        {/* Анимация подписки */}
-        <Box textAlign='center' mt={8}>
-          <motion.div
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ repeat: Infinity, duration: 1.2 }}
-            style={{
-              display: 'inline-block',
-              padding: '12px 24px',
-              background: '#D33C44',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-            }}
-          >
-            Подписывайся 🚀
-          </motion.div>
-        </Box>
-      </Container>
-    </Box>
+      <button onClick={handleDownload}>📥 Скачать HTML</button>
+    </div>
   );
 }
-
-export default withLayout(LessonHTML);
