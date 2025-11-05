@@ -16,7 +16,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
-const basePrompt = `Вакансия:
+const basePrompt = `
 Ты — эксперт по проверке вакансий на адекватность и фейки.
 Твоя задача — анализировать вакансии, представленные в формате JSON, 
 и классифицировать их как "адекватная", "подозрительная" или "фейковая".
