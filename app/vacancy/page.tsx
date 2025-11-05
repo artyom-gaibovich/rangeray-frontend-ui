@@ -158,7 +158,7 @@ ${JSON.stringify(data, null, 2)}
             }}
           >
             <Image
-              src='/kotenok.png'
+              src='/kotenok.jpeg'
               alt='kotenok'
               width={160}
               height={160}
