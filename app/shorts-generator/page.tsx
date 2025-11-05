@@ -11,16 +11,6 @@ type CodeBlockProps = {
   value: string;
 };
 
-/**
- * lucario
- holiTheme
- gruvboxDark
-
- dracula ?
-
- dark
- darcula
- */
 function CodeBlock({ language, value }: CodeBlockProps) {
   return (
     <SyntaxHighlighter
