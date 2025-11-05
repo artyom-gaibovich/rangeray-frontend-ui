@@ -140,4 +140,5 @@ function Home() {
     </>
   );
 }
+
 export default withLayout(Home);
