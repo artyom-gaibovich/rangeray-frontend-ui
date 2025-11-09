@@ -46,7 +46,11 @@ export default function LanguageCardCreator() {
     <div className='relative flex min-h-screen items-center justify-center bg-[#0F141A] p-8'>
       <div
         className='mx-auto my-5'
-        style={{ maxWidth: '600px', padding: '0 24px' }}
+        style={{
+          maxWidth: '600px',
+          padding: '0 24px',
+          fontFamily: "'JetBrains Mono', monospace",
+        }}
       >
         {/* Режим редактирования (сбор данных) */}
         {!saved ? (
@@ -173,7 +177,7 @@ export default function LanguageCardCreator() {
                 background: '#FFFFFF',
                 color: '#D33C44',
                 padding: '10px 14px',
-                fontWeight: 600,
+                fontWeight: 300,
                 fontSize: 16,
               }}
             >
